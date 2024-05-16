@@ -1,5 +1,5 @@
 .venv
 app/setting.py
-theme
+
 package-lock.json
 package.json
