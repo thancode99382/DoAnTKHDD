@@ -39,12 +39,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_browser_reload',
+    'tailwind',
+    'theme',
     'core',
     'users',
     'jobs',
     'applications',
     'django_ckeditor_5',
     'dj_database_url'
+]
+TAILWIND_APP_NAME = 'theme'
+
+INTERNAL_IPS = [
+    "127.0.0.1",
 ]
 
 MIDDLEWARE = [
