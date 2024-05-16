@@ -160,6 +160,9 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+
 customColorPalette = [
     {
         'color': 'hsl(4, 90%, 58%)',
