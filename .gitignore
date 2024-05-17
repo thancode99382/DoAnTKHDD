@@ -1,5 +1,6 @@
 .venv
-.idea
+package-lock.json
+package.json
 
 Use_Case_Scenarios.pdf
 applications_application.png
@@ -11,8 +12,8 @@ applications_application.png
 __pycache__/
 
 
-package-lock.json
-package.json
+app/package-lock.json
+app/package.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
