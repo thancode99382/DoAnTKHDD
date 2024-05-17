@@ -1,0 +1,90 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    {% tailwind_css %}
+</head>
+
+<body class="bg-gray-50 font-serif leading-normal tracking-normal">
+<div class=" mx-auto">
+    <div>
+        
+
+        <nav class="bg-white  border-gray-200 dark:bg-gray-900 ">
+            <div class=" flex flex-wrap items-center justify-between mx-3       ">
+            <a href="{% url 'home' %}" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="https://static.topcv.vn/v4/image/logo/topcv-logo-6.png" class="h-[72px] ml-4" alt="Flowbite Logo" />
+               
+            </a>
+            <div class="flex  md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <div class="md:block hidden space-x-3">
+                <button type="button" class="text-black  focus:ring-4 focus:outline-none border border-[#00B14F] focus:ring-[#00B14F] font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Đăng nhập</button>
+                <button type="button" class="text-white  focus:ring-4 focus:outline-none border border-[#00B14F] bg-[#00B14F] focus:ring-[#00B14F] font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Đăng ký</button>
+                <button type="button" class="text-white  focus:ring-4 focus:outline-none border bg-[#212F3F]  focus:ring-blue-300 font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Đăng tuyển & tìm hồ sơ</button>
+                </div>
+                <button id="menu-toggle" data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-cta" aria-expanded="false">
+                  <span class="sr-only">Open main menu</span>
+                  <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                  </svg>
+              </button>
+            </div>
+            <div class="items-center justify-between hidden transition-all duration-1000 ease-in-out  w-full md:flex md:w-auto md:order-1" id="navbar-cta">
+              <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <li>
+                  <a href="#" class="block py-2 px-3 md:p-0 text-white bg-[#00B14F] rounded md:bg-transparent md:text-[#00B14F] md:dark:text-blue-500" aria-current="page">Việc làm</a>
+                </li>
+                <li>
+                  <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#00B14F] md:dark:hover:text-[#00B14F] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Hồ sơ & CV</a>
+                </li>
+                <li>
+                  <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#00B14F] md:dark:hover:text-[#00B14F] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Công ty</a>
+                </li>
+                <li>
+                  <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#00B14F] md:dark:hover:text-[#00B14F] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Công cụ</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#00B14F] md:dark:hover:text-[#00B14F] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Cẩm nang nghề nghiệp</a>
+                  </li>
+              </ul>
+            </div>
+            </div>
+          </nav>
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navbarCta = document.getElementById('navbar-cta');
+    
+            menuToggle.addEventListener('click', function () {
+                const isExpanded = navbarCta.getAttribute('aria-expanded') === 'true';
+    
+                navbarCta.setAttribute('aria-expanded', !isExpanded);
+                // Thay đổi aria-expanded từ true thành false và ngược lại
+    
+                if (isExpanded) {
+                    navbarCta.classList.add('hidden');
+                    // Nếu menu đã mở, thêm lớp 'hidden' để ẩn đi
+                } else {
+                    navbarCta.classList.remove('hidden');
+                    // Nếu menu đang đóng, loại bỏ lớp 'hidden' để hiển thị
+                }
+            });
+        });
+        </script>
+            </div>
+    {% block content %}
+
+    {% endblock %}
+</div>
+</body>
+</html>
