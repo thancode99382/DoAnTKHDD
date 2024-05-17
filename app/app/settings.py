@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
+import platform
 from pathlib import Path
 from decouple import config
 import dj_database_url
@@ -160,8 +161,9 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+if platform.system() == 'Windows':
+    NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
-NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
 customColorPalette = [
     {
