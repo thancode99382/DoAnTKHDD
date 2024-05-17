@@ -1,6 +1,15 @@
 .venv
-theme
+
 .idea
 Use_Case_Scenarios.pdf
 applications_application.png
-app/setting.py
+app/app/settings.py
+
+/app/theme/*
+
+/app/static/*
+/app/templates/*
+
+# ignore all .pyc files
+*.pyc
+__pycache__/
