@@ -1,0 +1,357 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<div>
+  <div style="background: rgb(2,0,36);
+background: linear-gradient(29deg, rgba(2,0,36,1) 0%, rgba(0,177,79,1) 95%);" class=" h-[435px] relative      ">
+    <img src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/bg_header.webp"
+      class=" h-[435px] w-full " alt="">
+    <div class="absolute top-0 p-10">
+      <div class=" md:flex gap-8 md:px-32 px-3">
+        <div class="col space-y-6 ">
+          <h4 class="text-white">Công nghệ AI dự đoán, cá nhân hoá việc làm</h4>
+          <h2 class="text-white">
+            <span class="section-title text-[#00B14F]" style="display: inline;">Phúc lợi tốt</span>
+            dành cho bạn.
+          </h2>
+          <div class="form-search   ">
+            <form id="frm-search-job" method="GET" onsubmit="return false;">
+              <div class="group-search flex items-center p-2 rounded-xl bg-white md:w-[500px] w-[380px] ">
+                <div class="item item-search">
+                  <div class="icon">
+                    <i class="fa-regular fa-magnifying-glass"></i>
+                  </div>
+                  <input class="border-none focus:outline-none focus:ring-0 md:w-48 w-32 " value=""
+                    placeholder="Vị trí ứng tuyển" id="keyword" autocomplete="off">
+                </div>
+                <div class="item search-city">
+                  <div class="icon">
+                    <i class="fa-regular fa-location-dot"></i>
+                  </div>
+                  <select name="city" id="city" class=" md:w-48 w-32  border-none focus:outline-none focus:ring-0"
+                    tabindex="-1" aria-hidden="true">
+                    <option value="">Tất cả địa điểm</option>
+                    <option value="1">Hà Nội</option>
+                    <option value="2">Hồ Chí Minh</option>
+                    <option value="3">Bình Dương</option>
+                    <option value="4">Bắc Ninh</option>
+                    <option value="5">Đồng Nai</option>
+                    <option value="6">Hưng Yên</option>
+                    <option value="7">Hải Dương</option>
+                    <option value="8">Đà Nẵng</option>
+                    <option value="9">Hải Phòng</option>
+                    <option value="10">An Giang</option>
+                    <option value="11">Bà Rịa-Vũng Tàu</option>
+                    <option value="12">Bắc Giang</option>
+                    <option value="13">Bắc Kạn</option>
+                    <option value="14">Bạc Liêu</option>
+                    <option value="15">Bến Tre</option>
+                    <option value="16">Bình Định</option>
+                    <option value="17">Bình Phước</option>
+                    <option value="18">Bình Thuận</option>
+                    <option value="19">Cà Mau</option>
+                    <option value="20">Cần Thơ</option>
+                    <option value="21">Cao Bằng</option>
+                    <option value="22">Cửu Long</option>
+                    <option value="23">Đắk Lắk</option>
+                    <option value="24">Đắc Nông</option>
+                    <option value="25">Điện Biên</option>
+                    <option value="26">Đồng Tháp</option>
+                    <option value="27">Gia Lai</option>
+                    <option value="28">Hà Giang</option>
+                    <option value="29">Hà Nam</option>
+                    <option value="30">Hà Tĩnh</option>
+                    <option value="31">Hậu Giang</option>
+                    <option value="32">Hoà Bình</option>
+                    <option value="33">Khánh Hoà</option>
+                    <option value="34">Kiên Giang</option>
+                    <option value="35">Kon Tum</option>
+                    <option value="36">Lai Châu</option>
+                    <option value="37">Lâm Đồng</option>
+                    <option value="38">Lạng Sơn</option>
+                    <option value="39">Lào Cai</option>
+                    <option value="40">Long An</option>
+                    <option value="41">Miền Bắc</option>
+                    <option value="42">Miền Nam</option>
+                    <option value="43">Miền Trung</option>
+                    <option value="44">Nam Định</option>
+                    <option value="45">Nghệ An</option>
+                    <option value="46">Ninh Bình</option>
+                    <option value="47">Ninh Thuận</option>
+                    <option value="48">Phú Thọ</option>
+                    <option value="49">Phú Yên</option>
+                    <option value="50">Quảng Bình</option>
+                    <option value="51">Quảng Nam</option>
+                    <option value="52">Quảng Ngãi</option>
+                    <option value="53">Quảng Ninh</option>
+                    <option value="54">Quảng Trị</option>
+                    <option value="55">Sóc Trăng</option>
+                    <option value="56">Sơn La</option>
+                    <option value="57">Tây Ninh</option>
+                    <option value="58">Thái Bình</option>
+                    <option value="59">Thái Nguyên</option>
+                    <option value="60">Thanh Hoá</option>
+                    <option value="61">Thừa Thiên Huế</option>
+                    <option value="62">Tiền Giang</option>
+                    <option value="63">Toàn Quốc</option>
+                    <option value="64">Trà Vinh</option>
+                    <option value="65">Tuyên Quang</option>
+                    <option value="66">Vĩnh Long</option>
+                    <option value="67">Vĩnh Phúc</option>
+                    <option value="68">Yên Bái</option>
+                    <option value="100">Nước Ngoài</option>
+                  </select>
+                </div>
+                <div class="col-button">
+                  <button class="bg-[#00B14F] px-3 py-2 rounded-lg">Tìm kiếm</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <button class="btn-show-video">
+            <img class="md:h-48 md:w-[500px] h-40 w-[380px]"
+              src="https://cdn-new.topcv.vn/unsafe/800x/https://static.topcv.vn/v4/image/welcome/section-header/banner.png"
+              alt="">
+          </button>
+        </div>
+        <div class="col hidden md:block text-white bg-transparent  hover:border-[#00B14F] p-6 rounded-lg  w-[650px] shadow-lg hover:shadow-[#00B14F] duration-200 transition-all ease-in-out ">
+          <div class="box-demand-job ">
+            <div class="box-demand-job_work-market space-y-2  ">
+              <div class="work-market_header flex justify-between">
+                <span class="flex items-center gap-6">
+                  <img
+                    src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/section-header/work_market_star.png"
+                    class="h-6 w-6" alt="">
+                  Thị trường việc làm hôm nay:
+                </span>
+                <span class="date">17/05/2024</span>
+              </div>
+              <div class="work-market_content flex justify-between">
+                <div class="job-hiring">
+                  <span>Việc làm đang tuyển</span>
+                  <span class="quantity" name="quantity_job_recruitment">44.252</span>
+                  <div class="status down">
+                    <i class="fa-solid fa-arrow-trend-up"></i>
+                  </div>
+                </div>
+                <div class="job-hiring">
+                  <span>Việc làm mới hôm nay</span>
+                  <span class="quantity" name="quantity_job_new_today">2.283</span>
+                </div>
+              </div>
+            </div>
+            <div class="header space-y-3 flex items-center justify-between ">
+              <div class="header-title flex gap-6">
+                <img class="h-6 w-6"
+                  src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/section-header/trend-hr-chart.png"
+                  alt="">
+                <span class="caption">
+                  Nhu cầu tuyển dụng theo
+                </span>
+              </div>
+              <div class="box-select  ">
+                <select class="bg-transparent rounded-lg border border-[#00B14F] text-[#00B14F] outline-none " name="demand-job-select" id="demand-job-select"
+                  class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                  <option  value="2">
+                    Ngành nghề</option>
+                  <option value="4">
+                    Mức lương</option>
+                </select><span class="select2 select2-container select2-container--default select2-container--below"
+                  dir="ltr" style="width: 165px;"><span class="selection"><span
+                      class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true"
+                      aria-expanded="false" tabindex="0" aria-labelledby="select2-demand-job-select-container"><span
+                        class="select2-selection__rendered" id="select2-demand-job-select-container" title="
+        Ngành nghề">
+                      </span><span class="select2-selection__arrow" role="presentation"><b
+                          role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+                    aria-hidden="true"></span></span>
+              </div>
+            </div>
+            <img class="img-responsive loading-chart"
+              src="https://static.topcv.vn/v4/image/welcome/section-header/loading-chart.svg" style="display: none;">
+            <div class="box-chart" style="display: block;">
+              <div style="height: 105px">
+                <!-- chart -->
+                <div>
+
+                  <div class=" w-full h-52 text-black  dark:bg-gray-800 p-4 md:p-6">
+                    <div class="flex justify-between ">
+                      <div>
+                        <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">$12,423</h5>
+                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">Sales this week</p>
+                      </div>
+                      <div
+                        class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">
+                        23%
+                        <svg class="w-3 h-3 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                          viewBox="0 0 10 14">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 13V1m0 0L1 5m4-4 4 4" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div id="data-series-chart"></div>
+                    <div
+                      class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between mt-5">
+                      <div class="flex justify-between items-center pt-5">
+                        <!-- Button -->
+                        <button id="dropdownDefaultButton" data-dropdown-toggle="lastDaysdropdown"
+                          data-dropdown-placement="bottom"
+                          class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 text-center inline-flex items-center dark:hover:text-white"
+                          type="button">
+                          Last 7 days
+                          <svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="m1 1 4 4 4-4" />
+                          </svg>
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div id="lastDaysdropdown"
+                          class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                            aria-labelledby="dropdownDefaultButton">
+                            <li>
+                              <a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Yesterday</a>
+                            </li>
+                            <li>
+                              <a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Today</a>
+                            </li>
+                            <li>
+                              <a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last
+                                7 days</a>
+                            </li>
+                            <li>
+                              <a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last
+                                30 days</a>
+                            </li>
+                            <li>
+                              <a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last
+                                90 days</a>
+                            </li>
+                          </ul>
+                        </div>
+                        <a href="#"
+                          class="uppercase text-sm font-semibold inline-flex items-center rounded-lg text-blue-600 hover:text-blue-700 dark:hover:text-blue-500  hover:bg-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 px-3 py-2">
+                          Sales Report
+                          <svg class="w-2.5 h-2.5 ms-1.5 rtl:rotate-180" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="m1 9 4-4-4-4" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                
+              </div>
+              
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script>
+
+const options = {
+// add data series via arrays, learn more here: https://apexcharts.com/docs/series/
+series: [
+  {
+    name: "Developer Edition",
+    data: [1500, 1418, 1456, 1526, 1356, 1256],
+    color: "#FF8010",
+  },
+  {
+    name: "Designer Edition",
+    data: [643, 413, 765, 412, 1423, 1731],
+    color: "#00B14F",
+  },
+],
+chart: {
+  height: "50%",
+  maxWidth: "100%",
+  type: "area",
+  fontFamily: "Inter, sans-serif",
+  dropShadow: {
+    enabled: false,
+  },
+  toolbar: {
+    show: false,
+  },
+},
+tooltip: {
+  enabled: true,
+  x: {
+    show: false,
+  },
+},
+legend: {
+  show: false
+},
+fill: {
+  type: "gradient",
+  gradient: {
+    opacityFrom: 0.55,
+    opacityTo: 0,
+    shade: "#1C64F2",
+    gradientToColors: ["#1C64F2"],
+  },
+},
+dataLabels: {
+  enabled: false,
+},
+stroke: {
+  width: 6,
+},
+grid: {
+  show: false,
+  strokeDashArray: 4,
+  padding: {
+    left: 2,
+    right: 2,
+    top: 0
+  },
+},
+xaxis: {
+  categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
+  labels: {
+    show: false,
+  },
+  axisBorder: {
+    show: false,
+  },
+  axisTicks: {
+    show: false,
+  },
+},
+yaxis: {
+  show: false,
+  labels: {
+    formatter: function (value) {
+      return '$' + value;
+    }
+  }
+},
+}
+
+if (document.getElementById("data-series-chart") && typeof ApexCharts !== 'undefined') {
+const chart = new ApexCharts(document.getElementById("data-series-chart"), options);
+chart.render();
+}
+</script>
+</div>
+
+{% endblock %}
