@@ -1,6 +1,14 @@
 .venv
 .idea
 
+Use_Case_Scenarios.pdf
+applications_application.png
+
+/app/theme/*
+
+# ignore all .pyc files
+*.pyc
+__pycache__/
 
 
 package-lock.json
