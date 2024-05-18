@@ -9,7 +9,6 @@ applications_application.png
 
 # ignore all .pyc files
 *.pyc
-__pycache__/
 
 
 app/package-lock.json
@@ -22,6 +21,8 @@ __pycache__/
 
 # C extensions
 *.so
+
+app/theme/node_modules/
 
 # Distribution / packaging
 .Python
