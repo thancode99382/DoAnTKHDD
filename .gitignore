@@ -10,6 +10,7 @@ applications_application.png
 # ignore all .pyc files
 *.pyc
 
+README.pdf
 
 app/package-lock.json
 app/package.json
