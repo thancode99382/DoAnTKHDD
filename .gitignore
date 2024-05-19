@@ -3,7 +3,7 @@
 Use_Case_Scenarios.pdf
 applications_application.png
 
-app/theme/node_modules/
+app/theme/static_src/node_modules/
 
 # ignore all .pyc files
 *.pyc
