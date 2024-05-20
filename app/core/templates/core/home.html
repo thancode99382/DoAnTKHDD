@@ -6,8 +6,208 @@ Home
 
 {% block content %}
 <div>
+<<<<<<< HEAD
  <!-- main -->
  {% include "core/header.html" %}
+=======
+  <header>
+    <div
+      style="background-image: url('https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/bg_header.webp'); background-repeat: no-repeat; background-size: cover; background-position: center; "
+      class=" h-[435px]        ">
+      <!-- <img src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/bg_header.webp"
+      class=" h-[435px] w-full " alt=""> -->
+
+      <div class=" sm:containerc flex flex-col justify-between  px-6 sm:px-[144px] py-6 md:flex-row">
+        <div class="space-y-6 col    ">
+          <h4 class="text-white text-xl font-bold">Công nghệ AI dự đoán, cá nhân hoá việc làm</h4>
+          <h2 class="text-white text-xl font-bold">
+            <span class="section-title text-[#00B14F]" style="display: inline;">Phúc lợi tốt</span>
+            dành cho bạn.
+          </h2>
+          <div class="form-search ">
+            <form id="frm-search-job" method="GET" onsubmit="return false;">
+              <div class="group-search flex items-center p-2 rounded-xl bg-white w-full md:w-[500px]  ">
+                <div class="item item-search">
+                  <div class="icon">
+                    <i class="fa-regular fa-magnifying-glass"></i>
+                  </div>
+                  <input class="border-none w-36 sm:w-32 focus:outline-none focus:ring-0 md:w-48" value=""
+                    placeholder="Vị trí ứng tuyển" id="keyword" autocomplete="off">
+                </div>
+                <div class="item search-city">
+                  <div class="icon">
+                    <i class="fa-regular fa-location-dot"></i>
+                  </div>
+                  <select name="city" id="city" class="w-36 border-none sm:w-32 md:w-48 focus:outline-none focus:ring-0"
+                    tabindex="-1" aria-hidden="true">
+                    <option value="">Tất cả địa điểm</option>
+                    <option value="1">Hà Nội</option>
+                    <option value="2">Hồ Chí Minh</option>
+
+                  </select>
+                </div>
+                <div class="col-button">
+                  <button class="bg-[#00B14F] font-semibold md:text-sm text-xs px-3 py-2 rounded-lg">Tìm kiếm</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <button class="btn-show-video">
+            <img class="md:h-48 md:w-[500px] h-40 w-[500px]"
+              src="https://cdn-new.topcv.vn/unsafe/800x/https://static.topcv.vn/v4/image/welcome/section-header/banner.png"
+              alt="">
+          </button>
+        </div>
+        <div
+          class="col hidden lg:block text-white bg-black/20  hover:border-[#00B14F] p-6 rounded-lg  w-[650px]  min-[1800px]:w-[1000px] shadow-lg hover:shadow-[#00B14F] duration-200 transition-all ease-in-out ">
+          <div class="box-demand-job ">
+            <div class="space-y-2 box-demand-job_work-market ">
+              <div class="flex justify-between work-market_header">
+                <span class="flex items-center gap-6">
+                  <img
+                    src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/section-header/work_market_star.png"
+                    class="w-6 h-6" alt="">
+                  Thị trường việc làm hôm nay:
+                </span>
+                <span class="date">17/05/2024</span>
+              </div>
+              <div class="flex justify-between work-market_content">
+                <div class="job-hiring">
+                  <span>Việc làm đang tuyển</span>
+                  <span class="quantity" name="quantity_job_recruitment">44.252</span>
+                  <div class="status down">
+                    <i class="fa-solid fa-arrow-trend-up"></i>
+                  </div>
+                </div>
+                <div class="job-hiring">
+                  <span>Việc làm mới hôm nay</span>
+                  <span class="quantity" name="quantity_job_new_today">2.283</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between space-y-3 header ">
+              <div class="flex gap-6 header-title">
+                <img class="w-6 h-6"
+                  src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/section-header/trend-hr-chart.png"
+                  alt="">
+                <span class="caption">
+                  Nhu cầu tuyển dụng theo
+                </span>
+              </div>
+              <div class="box-select ">
+                <select class="bg-transparent rounded-lg border border-[#00B14F] text-[#00B14F] outline-none "
+                  name="demand-job-select" id="demand-job-select" class="form-control select2 select2-hidden-accessible"
+                  tabindex="-1" aria-hidden="true">
+                  <option value="2">
+                    Ngành nghề</option>
+                  <option value="4">
+                    Mức lương</option>
+                </select><span class="select2 select2-container select2-container--default select2-container--below"
+                  dir="ltr" style="width: 165px;"><span class="selection"><span
+                      class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true"
+                      aria-expanded="false" tabindex="0" aria-labelledby="select2-demand-job-select-container"><span
+                        class="select2-selection__rendered" id="select2-demand-job-select-container" title="
+          Ngành nghề">
+                      </span><span class="select2-selection__arrow" role="presentation"><b
+                          role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+                    aria-hidden="true"></span></span>
+              </div>
+            </div>
+            <img class="img-responsive loading-chart"
+              src="https://static.topcv.vn/v4/image/welcome/section-header/loading-chart.svg" style="display: none;">
+            <div class="box-chart" style="display: block;">
+              <div style="height: 105px">
+                <!-- chart -->
+                <div>
+
+                  <div class="w-full p-4 text-black h-52 dark:bg-gray-800 md:p-6">
+                    <div class="flex justify-between ">
+                      <div>
+                        <h5 class="pb-2 text-3xl font-bold leading-none text-gray-900 dark:text-white">$12,423</h5>
+                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">Sales this week</p>
+                      </div>
+                      <div
+                        class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">
+                        23%
+                        <svg class="w-3 h-3 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                          viewBox="0 0 10 14">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 13V1m0 0L1 5m4-4 4 4" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div id="data-series-chart"></div>
+                    <div
+                      class="grid items-center justify-between grid-cols-1 mt-5 border-t border-gray-200 dark:border-gray-700">
+                      <div class="flex items-center justify-between pt-5">
+                        <!-- Button -->
+                        <button id="dropdownDefaultButton" data-dropdown-toggle="lastDaysdropdown"
+                          data-dropdown-placement="bottom"
+                          class="inline-flex items-center text-sm font-medium text-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                          type="button">
+                          Last 7 days
+                          <svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="m1 1 4 4 4-4" />
+                          </svg>
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div id="lastDaysdropdown"
+                          class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                            aria-labelledby="dropdownDefaultButton">
+                            <li>
+                              <a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Yesterday</a>
+                            </li>
+                            <li>
+                              <a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Today</a>
+                            </li>
+                            <li>
+                              <a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last
+                                7 days</a>
+                            </li>
+                            <li>
+                              <a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last
+                                30 days</a>
+                            </li>
+                            <li>
+                              <a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last
+                                90 days</a>
+                            </li>
+                          </ul>
+                        </div>
+                        <a href="#"
+                          class="inline-flex items-center px-3 py-2 text-sm font-semibold text-[#00B14F] uppercase rounded-lg  dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+                          Sales Report
+                          <svg class="w-2.5 h-2.5 ms-1.5 rtl:rotate-180" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="m1 9 4-4-4-4" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+  </header>
+  <!-- main -->
+>>>>>>> 3ab233556071b1dcfe46db9943cb4c7033d3bf11
   <div class="bg-[#f3f5f7]">
     <div class="sm:containerc  px-6 sm:px-[144px] py-6">
       <div class="flex gap-3 items-center    ">
@@ -417,7 +617,11 @@ Home
 
     </div>
 
+<<<<<<< HEAD
     <!-- top jobs -->
+=======
+    <!-- top work -->
+>>>>>>> 3ab233556071b1dcfe46db9943cb4c7033d3bf11
     <div class="sm:containerc  px-6 sm:px-[144px] py-6 ">
       <div>
 
@@ -521,7 +725,165 @@ Home
       </div>
 
     </div>
+<<<<<<< HEAD
     {% include "core/footer.html" %}
+=======
+    <footer class="bg-white pt-10">
+      <div class="footer-main">
+        <div class="sm:containerc  px-6 sm:px-[144px] py-6 ">
+          <div class="grid md:grid-cols-4 gap-4">
+            <div class="column space-y-6">
+              <a>
+                <img src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/logo/topcv-logo-footer-6.png"
+                  class="mb-4" alt="TopCV tuyen dung tai TopCV" title="TopCV tuyển dụng tại TopCV">
+              </a>
+              <div class="flex mb-8">
+                <img
+                  src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/footer/google_for_startup.png"
+                  class="img-responsive" alt="" title="">
+                <a href="https://www.dmca.com/Protection/Status.aspx?ID=8be40718-7da1-4b43-875a-3efb819100c9&amp;refurl=https://www.topcv.vn/"
+                  title="DMCA.com Protection Status" class="dmca-badge">
+                  <img
+                    src="https://images.dmca.com/Badges/DMCA_badge_grn_60w.png?ID=8be40718-7da1-4b43-875a-3efb819100c9"
+                    alt="DMCA.com Protection Status" class="dmca-image">
+                </a>
+                <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
+                <a href="http://online.gov.vn/Home/WebDetails/25388" target="_blank">
+                  <img src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/footer/bct.jpg"
+                    class="img-responsive bct-image" alt="" title="">
+                </a>
+              </div>
+              <div class=" mb-7">
+                <p class="text-base font-bold">Liên hệ</p>
+                <span>Hotline:</span><a href="tel:02466805588">(024) 6680 5588 (Giờ hành chính)</a><br>
+                <span>Email:</span><a href="mailto:hotro@topcv.vn">hotro@topcv.vn</a>
+              </div>
+              <div class="box-download">
+                <p class="text-base font-bold mb-6">Ứng dụng tải xuống</p>
+                <div class="flex">
+                  <a target="_blank"
+                    href="https://itunes.apple.com/us/app/topcv-t%E1%BA%A1o-cv-t%C3%ACm-vi%E1%BB%87c-l%C3%A0m/id1455928592?ls=1&amp;mt=8"><img
+                      class="img-responsive"
+                      src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/download/app_store.png"
+                      alt="Tai app TopCV tai App Store" title="Tải app TopCV tại App Store"></a>
+                  <a target="_blank" href="https://play.google.com/store/apps/details?id=com.topcv"><img
+                      class="img-responsive"
+                      src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/download/chplay.png"
+                      alt="Tai app TopCV tai Google Play" title="Tải app TopCV tại Google Play"></a>
+                </div>
+              </div>
+              <div class="box-social">
+                <p class="ext-base font-bold mb-6">Cộng đồng TopCV</p>
+                <div class="flex gap-3">
+                  <a target="_blank" href="https://www.facebook.com/topcvbiz/">
+                    <img class="img-responsive"
+                      src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/footer/facebook.png">
+                  </a>
+                  <a target="_blank" href="https://www.youtube.com/c/TopCVpro">
+                    <img class="img-responsive"
+                      src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/footer/youtube.png">
+                  </a>
+                  <a target="_blank" href="https://www.linkedin.com/company/topcv-vietnam">
+                    <img class="img-responsive"
+                      src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/footer/linkedin.png">
+                  </a>
+                  <a target="_blank" href="https://www.tiktok.com/@topcv">
+                    <img class="img-responsive"
+                      src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/footer/tiktok.png">
+                  </a>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="column ">
+              <div class="space-y-3 ">
+                <div class="font-bold text-base">
+                  Về TopCV
+                </div>
+                <div class="space-y-3">
+                  <div >Giới thiệu</div>
+                  <div >Góc báo chí</div>
+                  <div>Tuyển
+                    dụng</div>
+                  <div >Liên hệ</div>
+                  <div >Hỏi đáp</div>
+                  <div >Chính sách bảo mật</div>
+                  <div >Quy chế hoạt
+                    động</div>
+                </div>
+              </div>
+              <div class="space-y-3 mt-6">
+                <div class="font-bold text-base">
+                  Đối tác
+                </div>
+                <div class="space-y-3">
+                  <div href="https://www.testcenter.vn/" target="_blank">TestCenter</div>
+                  <div href="https://tophr.vn" target="_blank">TopHR</div>
+                  <div href="https://www.viecngay.vn/" target="_blank">ViecNgay</div>
+                  <div href="https://happytime.vn/" target="_blank">Happy Time</div>
+                </div>
+              </div>
+            </div>
+            <div class="column ">
+              <div class="space-y-3">
+                <div class="font-bold text-base">
+                  Hồ sơ và CV
+                </div>
+                <div class="space-y-3 ">
+                  <div >Quản lý CV của bạn</div>
+                  <div >TopCV Profile</div>
+                  <div>Hướng dẫn viết CV</div>
+                  <div >Liên hệ</div>
+                  <div >Hỏi đáp</div>
+                  <div >Thư viện CV theo ngành nghề</div>
+                  <div >Review CV</div>
+                </div>
+              </div>
+              <div class="space-y-3 mt-6">
+                <div class="font-bold text-base">
+                  Khám phá
+                </div>
+                <div class="space-y-3 ">
+                  <div >Ứng dụng di động TopCV</div>
+                  <div >Tính lương Gross - Net</div>
+                  <div>Tính lãi suất kép</div>
+                  <div > Lập kế hoạch tiết kiệm</div>
+                </div>
+              </div>
+            </div>
+            <div class="column ">
+              <div class="space-y-3">
+                <div class="font-bold text-base">
+                  Xây dựng sự nghiệp
+                </div>
+                <div class="space-y-3">
+                  <div >Việc làm tốt nhất</div>
+                  <div >Việc làm lương cao</div>
+                  <div>Việc làm quản lý</div>
+                  <div >Việc làm IT</div>
+                  <div >Việc làm Senior</div>
+                  <div >Việc làm bán thời gian</div>
+                 
+                </div>
+              </div>
+              <div class="space-y-3 mt-6">
+                <div class="font-bold text-base">
+                  Phát triển bản thân
+                </div>
+                <div class="space-y-3">
+                  <div >TopCV Contest</div>
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </footer>
+
+>>>>>>> 3ab233556071b1dcfe46db9943cb4c7033d3bf11
   </div>
   {% block script %}
   <script src="{% static 'core/chart.js' %}"></script>
