@@ -6,7 +6,7 @@ class Candidate(models.Model):
     user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to='avatar_candidate/', null=True, blank=True)
     phone = models.CharField(max_length=20)
-    cv = models.FileField(upload_to='cv/')
+    cv = models.FileField(upload_to='cv/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def get_name(self):
