@@ -1,27 +1,28 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}
 Home
 {% endblock %}
 
 {% block content %}
 <div>
-  <div
-    style="background-image: url('https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/bg_header.webp'); background-repeat: no-repeat; background-size: cover; background-position: center; "
-    class=" h-[435px]        ">
-    <!-- <img src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/bg_header.webp"
+  <header>
+    <div
+      style="background-image: url('https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/bg_header.webp'); background-repeat: no-repeat; background-size: cover; background-position: center; "
+      class=" h-[435px]        ">
+      <!-- <img src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/bg_header.webp"
       class=" h-[435px] w-full " alt=""> -->
-    <div class="p-10 ">
-      <div class="flex flex-col justify-center gap-8 md:flex-row">
-        <div class="space-y-6 col  w-[300px] sm:w-[360px] md:w-[500px]  ">
-          <h4 class="text-white">Công nghệ AI dự đoán, cá nhân hoá việc làm</h4>
-          <h2 class="text-white">
+
+      <div class=" containerc flex flex-col justify-between py-6 md:flex-row">
+        <div class="space-y-6 col    ">
+          <h4 class="text-white text-xl font-bold">Công nghệ AI dự đoán, cá nhân hoá việc làm</h4>
+          <h2 class="text-white text-xl font-bold">
             <span class="section-title text-[#00B14F]" style="display: inline;">Phúc lợi tốt</span>
             dành cho bạn.
           </h2>
           <div class="form-search ">
             <form id="frm-search-job" method="GET" onsubmit="return false;">
-              <div class="group-search flex items-center p-2 rounded-xl bg-white md:w-[500px]  ">
+              <div class="group-search flex items-center p-2 rounded-xl bg-white w-[250px] md:w-[500px]  ">
                 <div class="item item-search">
                   <div class="icon">
                     <i class="fa-regular fa-magnifying-glass"></i>
@@ -38,73 +39,7 @@ Home
                     <option value="">Tất cả địa điểm</option>
                     <option value="1">Hà Nội</option>
                     <option value="2">Hồ Chí Minh</option>
-                    <option value="3">Bình Dương</option>
-                    <option value="4">Bắc Ninh</option>
-                    <option value="5">Đồng Nai</option>
-                    <option value="6">Hưng Yên</option>
-                    <option value="7">Hải Dương</option>
-                    <option value="8">Đà Nẵng</option>
-                    <option value="9">Hải Phòng</option>
-                    <option value="10">An Giang</option>
-                    <option value="11">Bà Rịa-Vũng Tàu</option>
-                    <option value="12">Bắc Giang</option>
-                    <option value="13">Bắc Kạn</option>
-                    <option value="14">Bạc Liêu</option>
-                    <option value="15">Bến Tre</option>
-                    <option value="16">Bình Định</option>
-                    <option value="17">Bình Phước</option>
-                    <option value="18">Bình Thuận</option>
-                    <option value="19">Cà Mau</option>
-                    <option value="20">Cần Thơ</option>
-                    <option value="21">Cao Bằng</option>
-                    <option value="22">Cửu Long</option>
-                    <option value="23">Đắk Lắk</option>
-                    <option value="24">Đắc Nông</option>
-                    <option value="25">Điện Biên</option>
-                    <option value="26">Đồng Tháp</option>
-                    <option value="27">Gia Lai</option>
-                    <option value="28">Hà Giang</option>
-                    <option value="29">Hà Nam</option>
-                    <option value="30">Hà Tĩnh</option>
-                    <option value="31">Hậu Giang</option>
-                    <option value="32">Hoà Bình</option>
-                    <option value="33">Khánh Hoà</option>
-                    <option value="34">Kiên Giang</option>
-                    <option value="35">Kon Tum</option>
-                    <option value="36">Lai Châu</option>
-                    <option value="37">Lâm Đồng</option>
-                    <option value="38">Lạng Sơn</option>
-                    <option value="39">Lào Cai</option>
-                    <option value="40">Long An</option>
-                    <option value="41">Miền Bắc</option>
-                    <option value="42">Miền Nam</option>
-                    <option value="43">Miền Trung</option>
-                    <option value="44">Nam Định</option>
-                    <option value="45">Nghệ An</option>
-                    <option value="46">Ninh Bình</option>
-                    <option value="47">Ninh Thuận</option>
-                    <option value="48">Phú Thọ</option>
-                    <option value="49">Phú Yên</option>
-                    <option value="50">Quảng Bình</option>
-                    <option value="51">Quảng Nam</option>
-                    <option value="52">Quảng Ngãi</option>
-                    <option value="53">Quảng Ninh</option>
-                    <option value="54">Quảng Trị</option>
-                    <option value="55">Sóc Trăng</option>
-                    <option value="56">Sơn La</option>
-                    <option value="57">Tây Ninh</option>
-                    <option value="58">Thái Bình</option>
-                    <option value="59">Thái Nguyên</option>
-                    <option value="60">Thanh Hoá</option>
-                    <option value="61">Thừa Thiên Huế</option>
-                    <option value="62">Tiền Giang</option>
-                    <option value="63">Toàn Quốc</option>
-                    <option value="64">Trà Vinh</option>
-                    <option value="65">Tuyên Quang</option>
-                    <option value="66">Vĩnh Long</option>
-                    <option value="67">Vĩnh Phúc</option>
-                    <option value="68">Yên Bái</option>
-                    <option value="100">Nước Ngoài</option>
+
                   </select>
                 </div>
                 <div class="col-button">
@@ -114,13 +49,13 @@ Home
             </form>
           </div>
           <button class="btn-show-video">
-            <img class="md:h-48 md:w-[500px] h-40 w-[380px]"
+            <img class="md:h-48 md:w-[500px] h-20 w-[250px]"
               src="https://cdn-new.topcv.vn/unsafe/800x/https://static.topcv.vn/v4/image/welcome/section-header/banner.png"
               alt="">
           </button>
         </div>
         <div
-          class="col hidden lg:block text-white bg-black/20  hover:border-[#00B14F] p-6 rounded-lg  w-[650px] shadow-lg hover:shadow-[#00B14F] duration-200 transition-all ease-in-out ">
+          class="col hidden lg:block text-white bg-black/20  hover:border-[#00B14F] p-6 rounded-lg  w-[650px]  min-[1800px]:w-[1000px] shadow-lg hover:shadow-[#00B14F] duration-200 transition-all ease-in-out ">
           <div class="box-demand-job ">
             <div class="space-y-2 box-demand-job_work-market ">
               <div class="flex justify-between work-market_header">
@@ -265,97 +200,241 @@ Home
           </div>
         </div>
       </div>
+
+  </header>
+  <!-- main -->
+  <div class="bg-[#f3f5f7]">
+    <div class="containerc py-6">
+      <div class="flex gap-3 items-center    ">
+        <h1 class="text-[24px] font-bold border-r-2 border-slate-600 pr-3"> Việc làm tốt nhất </h1> <img
+          class="w-[110px] h-[26px]"
+          src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/feature-job/label-toppy-ai.png"
+          alt="">
+      </div>
+      <div class="hidden sm:block">
+        <div class="box-smart-location">
+          <div class="prev-location btn-slick-arrow"><i class="fa-solid fa-angle-left"></i></div>
+          <div class="flex items-center mt-3">
+
+            <button
+              class=" text-white bg-[#00B14F]  focus:outline-none focus:ring-4 focus:ring-[#00B14F] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 ">
+              Ngẫu Nhiên
+            </button>
+            <button
+              class=" text-black bg-[#E9EAEC]  focus:outline-none hover:ring-1 hover:ring-[#00B14F] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
+              Hà Nội
+            </button>
+            <button
+              class=" text-black bg-[#E9EAEC]  focus:outline-none hover:ring-1 hover:ring-[#00B14F] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
+              Thành phố Hồ Chí Minh
+            </button>
+            <button
+              class=" text-black bg-[#E9EAEC]  focus:outline-none hover:ring-1 hover:ring-[#00B14F] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
+              Miền Bắc
+            </button>
+            <button
+              class=" text-black bg-[#E9EAEC]  focus:outline-none hover:ring-1 hover:ring-[#00B14F] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
+              Miền Nam
+            </button>
+
+          </div>
+          <div class="next-location btn-slick-arrow"><i class="fa-solid fa-angle-right"></i></div>
+        </div>
+      </div>
+      <div>
+        <div class="mt-3 grid 2xl:grid-cols-3  min-[1800px]:grid-cols-4">
+          <!-- ITEM VIỆC LÀM -->
+          <div class="bg-white rounded-md p-3 m-[10px] 2xl:w-[369px]    ">
+            <div class="flex gap-3 items-center">
+              <a>
+                <div class="box-company-logo">
+                  <div class="avatar">
+                    <img
+                      src="https://cdn-new.topcv.vn/unsafe/200x/https://static.topcv.vn/company_logos/7fvFMjFj92FKStMmcH0Q9sSxgRZ7gol4_1715230730____8bf94e6c8a59f0ff4c549ccf93f57fe6.jpeg"
+                      class="h-[70px] w-[70px]">
+                  </div>
+                  <div>
+                  </div>
+                </div>
+              </a>
+              <div class="overflow-hidden space-y-2  ">
+                <div class="space-y-2">
+                  <div>
+                    <a>
+                      <strong class="text-[14px] block truncate w-[250px] ">
+                        Nhân Viên Livestream TikTok - Tại Hồ Chí Minh - Thu Nhập Hấp Dẫn Lên Đến 25 Triệu (Lương Cứng 10
+                        Triệu + Thưởng Doanh Số)
+                      </strong>
+                    </a>
+                  </div>
+                  <div class=" sm:text-[12px] font-semibold">CÔNG TY CỔ PHẦN LIVESTREAM VIỆT NAM</div>
+                </div>
+                <div>
+                  <div class="flex gap-3 text-[12px] font-semibold">
+                    <div><span>10 - 35 triệu</span></div>
+                    <div class="address"><span>Hồ Chí Minh</span></div>
+                  </div>
+                  <div class="col-">
+                    <a>
+                      <button>
+                        <i class="fa-regular fa-heart"></i>
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+           <!-- ITEM VIỆC LÀM -->
+           <div class="bg-white rounded-sm p-3 m-[10px] 2xl:w-[369px]    ">
+            <div class="flex gap-3 items-center">
+              <a>
+                <div class="box-company-logo">
+                  <div class="avatar">
+                    <img
+                      src="https://cdn-new.topcv.vn/unsafe/200x/https://static.topcv.vn/company_logos/7fvFMjFj92FKStMmcH0Q9sSxgRZ7gol4_1715230730____8bf94e6c8a59f0ff4c549ccf93f57fe6.jpeg"
+                      class="h-[70px] w-[70px]">
+                  </div>
+                  <div>
+                  </div>
+                </div>
+              </a>
+              <div class="overflow-hidden space-y-2  ">
+                <div class="space-y-2">
+                  <div>
+                    <a>
+                      <strong class="text-[14px] block truncate w-[250px] ">
+                        Nhân Viên Livestream TikTok - Tại Hồ Chí Minh - Thu Nhập Hấp Dẫn Lên Đến 25 Triệu (Lương Cứng 10
+                        Triệu + Thưởng Doanh Số)
+                      </strong>
+                    </a>
+                  </div>
+                  <div class=" sm:text-[12px] font-semibold">CÔNG TY CỔ PHẦN LIVESTREAM VIỆT NAM</div>
+                </div>
+                <div>
+                  <div class="flex gap-3 text-[12px] font-semibold">
+                    <div><span>10 - 35 triệu</span></div>
+                    <div class="address"><span>Hồ Chí Minh</span></div>
+                  </div>
+                  <div class="col-">
+                    <a>
+                      <button>
+                        <i class="fa-regular fa-heart"></i>
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+           <!-- ITEM VIỆC LÀM -->
+           <div class="bg-white rounded-sm p-3 m-[10px] 2xl:w-[369px]    ">
+            <div class="flex gap-3 items-center">
+              <a>
+                <div class="box-company-logo">
+                  <div class="avatar">
+                    <img
+                      src="https://cdn-new.topcv.vn/unsafe/200x/https://static.topcv.vn/company_logos/7fvFMjFj92FKStMmcH0Q9sSxgRZ7gol4_1715230730____8bf94e6c8a59f0ff4c549ccf93f57fe6.jpeg"
+                      class="h-[70px] w-[70px]">
+                  </div>
+                  <div>
+                  </div>
+                </div>
+              </a>
+              <div class="overflow-hidden space-y-2  ">
+                <div class="space-y-2">
+                  <div>
+                    <a>
+                      <strong class="text-[14px] block truncate w-[250px] ">
+                        Nhân Viên Livestream TikTok - Tại Hồ Chí Minh - Thu Nhập Hấp Dẫn Lên Đến 25 Triệu (Lương Cứng 10
+                        Triệu + Thưởng Doanh Số)
+                      </strong>
+                    </a>
+                  </div>
+                  <div class=" sm:text-[12px] font-semibold">CÔNG TY CỔ PHẦN LIVESTREAM VIỆT NAM</div>
+                </div>
+                <div>
+                  <div class="flex gap-3 text-[12px] font-semibold">
+                    <div><span>10 - 35 triệu</span></div>
+                    <div class="address"><span>Hồ Chí Minh</span></div>
+                  </div>
+                  <div class="col-">
+                    <a>
+                      <button>
+                        <i class="fa-regular fa-heart"></i>
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+           <!-- ITEM VIỆC LÀM -->
+           <div class="bg-white rounded-sm p-3 m-[10px] 2xl:w-[369px]    ">
+            <div class="flex gap-3 items-center">
+              <a>
+                <div class="box-company-logo">
+                  <div class="avatar">
+                    <img
+                      src="https://cdn-new.topcv.vn/unsafe/200x/https://static.topcv.vn/company_logos/7fvFMjFj92FKStMmcH0Q9sSxgRZ7gol4_1715230730____8bf94e6c8a59f0ff4c549ccf93f57fe6.jpeg"
+                      class="h-[70px] w-[70px]">
+                  </div>
+                  <div>
+                  </div>
+                </div>
+              </a>
+              <div class="overflow-hidden space-y-2  ">
+                <div class="space-y-2">
+                  <div>
+                    <a>
+                      <strong class="text-[14px] block truncate w-[250px] ">
+                        Nhân Viên Livestream TikTok - Tại Hồ Chí Minh - Thu Nhập Hấp Dẫn Lên Đến 25 Triệu (Lương Cứng 10
+                        Triệu + Thưởng Doanh Số)
+                      </strong>
+                    </a>
+                  </div>
+                  <div class=" sm:text-[12px] font-semibold">CÔNG TY CỔ PHẦN LIVESTREAM VIỆT NAM</div>
+                </div>
+                <div>
+                  <div class="flex gap-3 text-[12px] font-semibold">
+                    <div><span>10 - 35 triệu</span></div>
+                    <div class="address"><span>Hồ Chí Minh</span></div>
+                  </div>
+                  <div class="col-">
+                    <a>
+                      <button>
+                        <i class="fa-regular fa-heart"></i>
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+
+          
+
+
+
+        </div>
+      </div>
+
     </div>
 
+
+
   </div>
-  <script>
+  {% block script %}
+  <script src="{% static 'core/chart.js' %}"></script>
+  {% endblock %}
+</div>
+</div>
 
-    const options = {
-      // add data series via arrays, learn more here: https://apexcharts.com/docs/series/
-      series: [
-        {
-          name: "Developer Edition",
-          data: [1500, 1418, 1456, 1526, 1356, 1256],
-          color: "#FF8010",
-        },
-        {
-          name: "Designer Edition",
-          data: [643, 413, 765, 412, 1423, 1731],
-          color: "#00B14F",
-        },
-      ],
-      chart: {
-        height: "50%",
-        maxWidth: "100%",
-        type: "area",
-        fontFamily: "Inter, sans-serif",
-        dropShadow: {
-          enabled: false,
-        },
-        toolbar: {
-          show: false,
-        },
-      },
-      tooltip: {
-        enabled: true,
-        x: {
-          show: false,
-        },
-      },
-      legend: {
-        show: false
-      },
-      fill: {
-        type: "gradient",
-        gradient: {
-          opacityFrom: 0.55,
-          opacityTo: 0,
-          shade: "#1C64F2",
-          gradientToColors: ["#1C64F2"],
-        },
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      stroke: {
-        width: 6,
-      },
-      grid: {
-        show: false,
-        strokeDashArray: 4,
-        padding: {
-          left: 2,
-          right: 2,
-          top: 0
-        },
-      },
-      xaxis: {
-        categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
-        labels: {
-          show: false,
-        },
-        axisBorder: {
-          show: false,
-        },
-        axisTicks: {
-          show: false,
-        },
-      },
-      yaxis: {
-        show: false,
-        labels: {
-          formatter: function (value) {
-            return '$' + value;
-          }
-        }
-      },
-    }
-
-    if (document.getElementById("data-series-chart") && typeof ApexCharts !== 'undefined') {
-      const chart = new ApexCharts(document.getElementById("data-series-chart"), options);
-      chart.render();
-    }
-  </script>
 </div>
 
 {% endblock %}

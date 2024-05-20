@@ -8,8 +8,8 @@ app/theme/static_src/node_modules/
 
 # ignore all .pyc files
 *.pyc
-__pycache__/
 
+README.pdf
 
 app/package-lock.json
 app/package.json
@@ -20,6 +20,8 @@ app/package.json
 
 # C extensions
 *.so
+
+app/theme/node_modules/
 
 # Distribution / packaging
 .Python
