@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+<div class="sm:flex  ">
+  <div class=" flex justify-center items-center pt-16 px-4 pb-5  h-screen w-full">
+    <form method="post" action="{% url 'users:register' %}">
+        {% csrf_token %}
+      <div class="pb-[24px] ">
+        <h2 class="font-bold text-[#00B14F] text-2xl">Chào mừng bạn đã quay trở lại</h2>
+        <p>Cùng xây dựng một hồ sơ nổi bật và nhận được các cơ hội sự nghiệp lý tưởng</p>
+      </div>
+      <div class="mb-6">
+        <div class="mb-1">Username</div>
+        <div class="flex items-center gap-2 border px-5 py-2 ">
+          <div><i class="bi bi-person-fill text-[#00B14F]"></i></div>
+          <div>
+              {{ form.username|add_class:"outline-none focus:ring-0 border-none bg-transparent w-full" }}
+          </div>
+        </div>
+          {% if form.username.errors %}
+          	<div class="text-red-500">
+                {{ form.username.errors }}
+            </div>
+          {% endif %}
+      </div>
+      <div class="mb-6">
+        <div class="mb-1">Email</div>
+        <div class="flex items-center gap-2 border px-5 py-2 ">
+          <div><i class="bi bi-envelope text-[#00B14F]"></i></div>
+          <div>
+          {{ form.email|add_class:"outline-none focus:ring-0 border-none bg-transparent w-full" }}</div>
+        </div>
+          {% if form.email.errors %}
+          	<div class="text-red-500">
+                {{ form.email.errors }}
+            </div>
+          {% endif %}
+      </div>
+      <div class="mb-6">
+        <div class="mb-1">Mật khẩu</div>
+        <div class="flex items-center gap-2 border px-5 py-2 ">
+          <div><i class="bi bi-shield-lock-fill text-[#00B14F]"></i></div>
+          <div>
+          {{ form.password1|add_class:"outline-none focus:ring-0 border-none bg-transparent w-full" }}
+
+          </div>
+        </div>
+          {% if form.password1.errors %}
+          	<div class="text-red-500">
+                {{ form.password1.errors }}
+            </div>
+          {% endif %}
+      </div>
+      <div class="mb-6">
+        <div class="mb-1">Nhập lại mật khẩu </div>
+        <div class="flex items-center gap-2 border px-5 py-2 ">
+          <div><i class="bi bi-shield-lock-fill text-[#00B14F]"></i></div>
+          <div>
+          {{ form.password2|add_class:"outline-none focus:ring-0 border-none bg-transparent w-full" }}
+          </div>
+        </div>
+          {% if form.password2.errors %}
+          	<div class="text-red-500">
+                {{ form.password2.errors }}
+            </div>
+          {% endif %}
+      </div>
+
+      <div class="flex text-lg font-semibold text-white justify-center rounded-md bg-[#00B14F] px-3 py-2 "> <button type="submit"> Đăng ky </button> </div>
+
+    </form>
+  </div>
+
+
+  <div
+    style="background-image: url('https://static.topcv.vn/v4/image/auth/auth_bg_desktop.png'); background-position: center ; background-repeat: no-repeat; background-size: cover;"
+    class=" h-screen w-full text-white flex justify-center items-center p-10">
+    <div class=""> <img src="https://static.topcv.vn/v4/image/auth/topcv_white.png" alt="">
+      <div>
+        <h1 class="text-2xl font-bold mt-6 ">Tiếp lợi thế
+          Nối thành công
+
+
+        </h1>
+        <p class="text-base font-medium ">TopCV - Hệ sinh thái nhân sự tiên phong ứng dụng công nghệ tại Việt Nam</p>
+      </div>
+    </div>
+    <div><img src="https://static.topcv.vn/v4/image/auth/auth_arrow.png" class="h-[608px] w-[211px]" alt=""> </div>
+  </div>
+</div>
+
+{% endblock %}
