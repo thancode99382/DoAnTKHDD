@@ -111,8 +111,20 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 
 DATABASES = {
-    'default': dj_database_url.parse(config('DB_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'jobs_management',
+        'USER': 'duchi',
+        'PASSWORD': '231132',
+        'HOST': 'localhost',
+        'PORT': 3306,
+    }
 }
+
+#
+# DATABASES = {
+#     'default': dj_database_url.parse(config('DB_URL'))
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

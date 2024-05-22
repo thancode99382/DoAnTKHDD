@@ -1,0 +1,7 @@
+{% for top_company in top_companies %}
+    <div class="h-[208px] 2xl:w-[270px] bg-white flex flex-col justify-center items-center p-4 rounded-xl text-sm font-bold mt-5  border-2  ">
+        <img alt="Logo" class="lazy entered loaded" data-ll-status="loaded"
+             src="{{ top_company.company.logo.url }}">
+        <h3 class="top-company__title">{{ top_company.company.name }}</h3>
+    </div>
+{% endfor %}

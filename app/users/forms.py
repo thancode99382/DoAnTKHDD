@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+from .models import *
+
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -16,3 +18,17 @@ class CustomUserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class EmployerForm(forms.ModelForm):
+    class Meta:
+        model = Employer
+        fields = ('phone', 'avatar', 'company')
+        exclude = ('user',)
+
+    def save(self, commit=True):
+        employer = super().save(commit=False)
+        employer.user = self.instance
+        if commit:
+            employer.save()
+        return employer

@@ -4,7 +4,8 @@ from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views import generic
 
-from users.forms import CustomUserCreationForm
+from users.forms import CustomUserCreationForm, EmployerForm
+from .models import *
 
 
 # Create your views here.
@@ -19,6 +20,7 @@ class Login(LoginView):
 
     def get_success_url(self):
         return reverse_lazy('core:home')
+
 
 class Register(generic.CreateView):
     form_class = CustomUserCreationForm
@@ -35,3 +37,14 @@ class Register(generic.CreateView):
         user = form.instance
         login(self.request, user)
         return response
+
+
+class RegisterEmployer(generic.CreateView):
+    form_class = EmployerForm
+    success_url = reverse_lazy('core:home')
+    template_name = 'users/register_employer.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Register Employer'
+        return context

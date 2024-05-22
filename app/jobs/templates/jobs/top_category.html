@@ -1,0 +1,22 @@
+{% for top_category in top_categories %}
+    <div class="mx-3">
+        <div class="flex justify-center items-center flex-col bg-[#F3F5F7] rounded-lg p-6 mb-6 shadow hover:shadow-[#00B14F] ">
+            <div class="top-category__image ">
+                <a>
+                    <img class=" h-[100px] w-[100px]"
+                         src="{{ top_category.image.url }}">
+                </a>
+            </div>
+
+            <div class="text-center">
+                <h3 class="top-category__name font-bold"><a>{{ top_category.name }}</a>
+                </h3>
+                <p class="top-category__caption font-medium text-sm text-[#00B14F]">{{ top_category.job_counts }} việc
+                    làm</p>
+            </div>
+
+
+        </div>
+    </div>
+
+{% endfor %}

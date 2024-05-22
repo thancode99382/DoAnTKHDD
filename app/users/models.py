@@ -9,11 +9,11 @@ class Candidate(models.Model):
     cv = models.FileField(upload_to='cv/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def get_name(self):
+    def get_fullname(self):
         return self.user.get_full_name()
 
     def __str__(self):
-        return self.get_name()
+        return self.get_fullname()
 
 
 class Employer(models.Model):
@@ -23,8 +23,8 @@ class Employer(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     company = models.ForeignKey('jobs.Company', on_delete=models.CASCADE)
 
-    def get_name(self):
+    def get_fullname(self):
         return self.user.get_full_name()
 
     def __str__(self):
-        return self.get_name()
+        return self.get_fullname()
