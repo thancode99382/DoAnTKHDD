@@ -9,7 +9,6 @@ app/theme/static_src/node_modules/
 # ignore all .pyc files
 *.pyc
 
-README.pdf
 
 app/package-lock.json
 app/package.json

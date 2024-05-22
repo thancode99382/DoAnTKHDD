@@ -26,6 +26,7 @@ class Job(models.Model):
     category = models.ForeignKey('JobCategory', on_delete=models.CASCADE, null=True, blank=True)
     experience_min = models.IntegerField(null=True, blank=True)
     experience_max = models.IntegerField(null=True, blank=True)
+    expired_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.title

@@ -66,7 +66,7 @@ class CompanyForm(forms.ModelForm):
 class RecruitmentForm(forms.ModelForm):
     class Meta:
         model = Job
-        fields = ['title', 'description', 'company', 'keywords', 'category', 'salary_min', 'salary_max']
+        fields = ['title', 'description', 'company', 'keywords', 'category', 'salary_min', 'salary_max', 'expired_at']
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
