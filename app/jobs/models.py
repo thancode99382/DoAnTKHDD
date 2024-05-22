@@ -24,6 +24,8 @@ class Job(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=255, unique=True, null=True, blank=True)
     category = models.ForeignKey('JobCategory', on_delete=models.CASCADE, null=True, blank=True)
+    experience_min = models.IntegerField(null=True, blank=True)
+    experience_max = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -40,6 +42,15 @@ class Job(models.Model):
         if self.salary_min is None and self.salary_max:
             return f'Dưới {salary_max_str[:2]} triệu'
         return f'{salary_min_str[:2]} - {salary_max_str[:2]} triệu'
+
+    def get_experience_year(self):
+        if self.experience_min is None and self.experience_max is None:
+            return "Không yêu cầu kinh nghiệm"
+        if self.experience_min is None and self.experience_max:
+            return f"Tối thiểu {self.experience_max} năm"
+        if self.experience_min and self.experience_max is None:
+            return f"Trên {self.experience_min} năm"
+        return f"{self.experience_min} - {self.experience_max} năm"
 
 
 # Keyword can be represented as a tag for job

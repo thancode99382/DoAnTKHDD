@@ -4,13 +4,17 @@
 Nhân viên live stream
 {% endblock %}
 
+{% block css-path %}
+<link rel="stylesheet" href="{% static 'jobs/styles.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="   md:px-[144px] px-8 mb-3    ">
   <div class="pt-12  grid 2xl:grid-cols-3 gap-6  ">
     <div class="2xl:col-span-2 grid gap-6 2xl:order-1 order-2  ">
       <div class="   h-[236px] rounded-lg bg-white p-6  ">
 
-        <div class="font-bold md:text-xl mb-2 md:mb-6"> Nhân Viên Kinh Doanh / Sales - Nữ (Hồ Chí Minh)</div>
+        <div class="font-bold md:text-xl mb-2 md:mb-6">{{ job.title }}</div>
         <div class=" space-x-3 sm:space-x-36 flex justify-start">
           <div class="flex gap-2 items-center    ">
             <div
@@ -25,8 +29,8 @@ Nhân viên live stream
               </svg>
             </div>
             <div class="sm:text-sm text-[10px]">
-              <p>Mức lương</p>
-              <h1 class=" font-bold  "> Thỏa thuận </h1>
+              <p class="font-light">Mức lương</p>
+              <h1 class=" font-semibold  ">{{ job.salary_written_in_text }} </h1>
             </div>
           </div>
           <div class="flex gap-2 items-center    ">
@@ -39,8 +43,17 @@ Nhân viên live stream
               </svg>
             </div>
             <div class="sm:text-sm text-[10px]">
-              <p>Địa điểm </p>
-              <h1 class="font-bold"> Hà nội </h1>
+              <p class="font-light">Địa điểm </p>
+              <h1 class="font-semibold">
+                  <span>
+                    {% if job.keywords.all > 2 %}
+                        {{ job.keywords.all.first }} & {{ job.keywords.all.count }} noi khac
+                    {% else %}
+                    {{ job.keywords.all|join:", " }}
+                    {% endif %}
+
+                  </span>
+              </h1>
             </div>
           </div>
           <div class="flex gap-2 items-center    ">
@@ -56,8 +69,8 @@ Nhân viên live stream
               </svg>
             </div>
             <div class="sm:text-sm text-[10px]">
-              <p>Kinh ngiệm </p>
-              <h1 class="font-bold"> 1 năm </h1>
+              <p class="font-light">Kinh ngiệm </p>
+              <h1 class="font-semibold"> {{ job.get_experience_year }} </h1>
             </div>
           </div>
         </div>
@@ -77,53 +90,8 @@ Nhân viên live stream
 
       <div class=" rounded-lg   bg-white p-[24px]">
         <div class="job-detail__information-detail--content">
-          <div class="job-description">
-            <div class="font-bold md:text-xl mb-2 md:mb-6 "> Chi tiết tin tuyển dụng</div>
-            <div class="job-description__item ">
-              <h3 class="font-bold text-base mb-3">Mô tả công việc</h3>
-              <div class="job-description__item--content space-y-3 mb-3 ">
-                <p>1. Phát triển đại lý và khách hàng; nghiên cứu, thu thập thông tin thị trường và lập kế hoạch bán
-                  hàng.</p>
-                <p>2. Quản lý theo dõi đơn đặt hàng và công nợ của khách hàng.</p>
-                <p>3. Sắp xếp, lưu trữ các văn bản hành chính kinh doanh.</p>
-                <p>4. Thăm hỏi khách hàng trong các chuyến công tác và hướng dẫn khách hàng cách sử dụng sản phẩm.</p>
-                <p>5. Công việc hành chính của bộ phận và công việc khác do cấp trên giao phó.</p>
-              </div>
-            </div>
-            <div class="job-description__item">
-              <h3 class="font-bold text-base mb-3">Yêu cầu ứng viên</h3>
-              <div class="job-description__item--content space-y-3 mb-3">
-                <p>• Tốt nghiệp: Đại học</p>
-                <p>• Tiếng Anh hoặc tiếng Trung 4 kỹ năng nghe nói đọc viết lưu loát. (có chứng chỉ)</p>
-                <p>• Kinh nghiệm: Không yêu cầu (công ty đào tạo).</p>
-                <p>• Ưu tiên: có kinh nghiệm làm việc tại các nhà máy bê tông hoặc nhà máy xi măng.</p>
-              </div>
-            </div>
-            <div class="job-description__item">
-              <h3 class="font-bold text-base mb-3">Quyền lợi</h3>
-              <div class="job-description__item--content space-y-3 mb-3">
-                <p>1. Thời gian làm việc: từ thứ hai đến thứ 6 (7h30 đến 17h00_nghỉ trưa: 11h40 đến 12h45); thứ bảy và
-                  chủ nhật: nghỉ</p>
-                <p>2. Công ty đóng BHXH cho nhân viên ngay từ tháng thử việc.</p>
-                <p>3. Thưởng kết quả kinh doanh mỗi tháng (khi công ty có lợi nhuận tháng).</p>
-                <p>4. Thưởng công việc 1 năm 2 lần phát vào lương tháng 3 và tháng 9.</p>
-                <p>5. Thưởng lương tháng 13.</p>
-                <p>6. Thưởng khích lệ năm (khi công ty có lợi nhuận năm).</p>
-                <p>7. Các chế độ khác căn cứ theo Bộ luật Lao động Việt Nam hiện hành.</p>
-              </div>
-            </div>
-            <div class="job-description__item ">
-              <h3>Địa điểm làm việc</h3>
-              <div class="job-description__item--content ">
-                <div style="margin-bottom: 10px">- Hồ Chí Minh: Tòa nhà 678, Quận 7</div>
-              </div>
-            </div>
-            <div class="job-description__item">
-              <h3 class="font-bold text-base mb-3">Cách thức ứng tuyển</h3>
-              <div class="job-description__item--content space-y-3 mb-3">
-                Ứng viên nộp hồ sơ trực tuyến bằng cách bấm <strong>Ứng tuyển</strong> ngay dưới đây.
-              </div>
-            </div>
+          <div class="job-description ck-content">
+              {{ job.description|safe }}
           </div>
         </div>
       </div>
@@ -132,21 +100,21 @@ Nhân viên live stream
 
       <!-- information -->
       <div class="   rounded-lg bg-white p-5  ">
-        <div class="flex gap-2  ">
-          <div><img class="h-[88px] w-auto p-2 "
-              src="https://cdn-new.topcv.vn/unsafe/80x/https://static.topcv.vn/company_logos/cong-ty-tnhh-tai-nguyen-chc-viet-nam-chi-nhanh-ba-ria-vung-tau-62e8845b65db5.jpg"
-              alt=""></div>
-          <div class="  font-bold text-base  w-56 "> CÔNG TY TNHH TÀI NGUYÊN CHC VIỆT NAM - CHI NHÁNH BÀ RỊA -
-            VŨNG TÀU </div>
+        <div class="flex gap-2 items-center ">
+          <div>
+              <img class="h-[88px] w-auto p-2 "
+              src="{{ job.company.logo.url }}"
+              alt="">
+          </div>
+          <div class="  font-semibold text-slate-800 text-base  ">{{ job.company.name }}</div>
         </div>
-        <div class="flex gap-2 ">
-          <div class="text-[#7F878F] shrink-0 font-semibold"> Quy mô: </div>
-          <div class="font-semibold"> 100-499 nhân viên</div>
+        <div class="flex gap-2 mt-2">
+          <div class="text-[#7F878F] shrink-0 text-sm"> Quy mô: </div>
+          <div class="text-sm"> 100-499 nhân viên</div>
         </div>
-        <div class="flex gap-2 ">
-          <div class="text-[#7F878F]  font-semibold shrink-0"> Địa điểm: </div>
-          <div class="font-semibold"> Phường Tân Phú, Quận 7, Hồ Chí Minh / Khu công nghiệp Mỹ Xuân A2, Phường Mỹ Xuân,
-            Thị xã Phú Mỹ, Tỉnh Bà Rịa - Vũng Tàu</div>
+        <div class="flex gap-2 mt-2 ">
+          <div class="text-[#7F878F] shrink-0 text-sm"> Địa điểm: </div>
+          <div class="text-sm">{{ job.company.address }}</div>
         </div>
         <div>
 
@@ -171,8 +139,8 @@ Nhân viên live stream
               </svg>
             </div>
             <div class="sm:text-sm text-[10px]">
-              <p>Cấp bậc </p>
-              <h1 class=" font-bold  ">Nhân viên </h1>
+              <p class="font-light">Cấp bậc </p>
+              <h1 class=" font-semibold  ">Nhân viên </h1>
             </div>
           </div>
 
@@ -189,8 +157,8 @@ Nhân viên live stream
               </svg>
             </div>
             <div class="sm:text-sm text-[10px]">
-              <p>Kinh ngiệm </p>
-              <h1 class="font-bold"> 1 năm </h1>
+              <p class="font-light">Kinh ngiệm </p>
+              <h1 class="font-semibold"> 1 năm </h1>
             </div>
           </div>
 
@@ -213,8 +181,8 @@ Nhân viên live stream
               </svg>
             </div>
             <div class="sm:text-sm text-[10px]">
-              <p>Số lượng tuyển </p>
-              <h1 class="font-bold"> 2 người </h1>
+              <p class="font-light">Số lượng tuyển </p>
+              <h1 class="font-semibold"> 2 người </h1>
             </div>
           </div>
           <div class="flex gap-2 items-center    ">
@@ -230,8 +198,8 @@ Nhân viên live stream
               </svg>
             </div>
             <div class="sm:text-sm text-[10px]">
-              <p>Hình thức làm việc </p>
-              <h1 class="font-bold"> Toàn thời gian </h1>
+              <p class="font-light">Hình thức làm việc </p>
+              <h1 class="font-semibold"> Toàn thời gian </h1>
             </div>
           </div>
 
@@ -248,8 +216,8 @@ Nhân viên live stream
               </svg>
             </div>
             <div class="sm:text-sm text-[10px]">
-              <p>Giời tính </p>
-              <h1 class="font-bold"> Nữ </h1>
+              <p class="font-light">Giới tính</p>
+              <h1 class="font-semibold"> Nữ </h1>
             </div>
           </div>
 

@@ -1,11 +1,12 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
-from users.forms import CustomUserCreationForm, EmployerForm
-from .models import *
+from jobs.models import Company
+from users.forms import CustomUserCreationForm, EmployerForm, CompanyForm
 
 
 # Create your views here.
@@ -47,4 +48,25 @@ class RegisterEmployer(generic.CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Register Employer'
+        context['company_form'] = CompanyForm()
+        context['companies'] = Company.objects.all()
         return context
+
+    def form_valid(self, form):
+        employer = form.save(commit=False)
+        employer.user = self.request.user
+        employer.company = Company.objects.get(id=self.request.POST.get('company'))
+        gender = self.request.POST.get('gender')
+        gender_bool = True if gender == 'male' else False
+        employer.gender = gender_bool
+        # if avatar:
+        #     employer.avatar = avatar
+        employer.save()
+        return redirect('core:home')
+
+
+def user_logout(request):
+    if request.user.is_authenticated:
+        logout(request)
+    return redirect('core:home')
+
