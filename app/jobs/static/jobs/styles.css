@@ -1,0 +1,93 @@
+/* Custom styles to reset Tailwind CSS for CKEditor content */
+.ck-content {
+  all: unset;
+  /* Base styles */
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin: 1rem 0;
+  padding: 0 1rem;
+}
+
+/* Reapply default browser styles and enhance them */
+.ck-content h1 {
+  all: revert;
+  font-size: 2.25rem; /* Tailwind's text-3xl */
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #1a202c; /* Tailwind's text-gray-900 */
+}
+
+.ck-content h2 {
+  all: revert;
+  font-size: 1.875rem; /* Tailwind's text-2xl */
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #2d3748; /* Tailwind's text-gray-800 */
+}
+
+.ck-content h3 {
+  all: revert;
+  font-size: 1.5rem; /* Tailwind's text-xl */
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #4a5568; /* Tailwind's text-gray-700 */
+}
+
+.ck-content p {
+  all: revert;
+  margin-bottom: 1rem;
+}
+
+.ck-content ul, .ck-content ol {
+  all: revert;
+  margin: 1rem 0 1rem 1.5rem;
+}
+
+.ck-content ul {
+  list-style-type: disc;
+}
+
+.ck-content ol {
+  list-style-type: decimal;
+}
+
+.ck-content a {
+  all: revert;
+  color: #3182ce; /* Tailwind's text-blue-600 */
+  text-decoration: underline;
+}
+
+.ck-content blockquote {
+  all: revert;
+  font-style: italic;
+  border-left: 4px solid #cbd5e0; /* Tailwind's border-gray-300 */
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: #718096; /* Tailwind's text-gray-600 */
+  background-color: #f7fafc; /* Tailwind's bg-gray-100 */
+}
+
+.ck-content code {
+  all: revert;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #edf2f7; /* Tailwind's bg-gray-200 */
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem; /* Tailwind's rounded */
+  color: #e53e3e; /* Tailwind's text-red-600 */
+}
+
+.ck-content pre {
+  all: revert;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #2d3748; /* Tailwind's bg-gray-800 */
+  color: #f7fafc; /* Tailwind's text-gray-100 */
+  padding: 1rem;
+  border-radius: 0.25rem; /* Tailwind's rounded */
+  overflow: auto;
+  margin: 1rem 0;
+}

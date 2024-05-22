@@ -1,0 +1,53 @@
+{% for job in top_jobs %}
+    <div class="bg-white rounded-md p-3 m-[10px] 2xl:w-[369px]    ">
+        <div class="flex gap-3 items-center">
+            <a>
+                <div class="box-company-logo">
+                    <div class="avatar">
+                        <img alt="{{ job.company.name }} logo"
+                             src="{{ job.company.logo.url }}"
+                             class="h-[70px] w-[70px]">
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </a>
+            <div class="overflow-hidden space-y-2  ">
+                <div class="space-y-2">
+                    <div>
+                        <a href="{% url 'jobs:detail-job' job.slug %}" class="hover:underline hover:text-green-500 transition-all">
+                            <strong class="text-[14px] block truncate w-[250px] ">
+                                {% if job.hurryjob %}
+                                	<span class="bg-amber-500 text-white  p-2 rounded-2xl">{{ job.hurryjob }}</span>
+                                {% endif %}
+                                {{ job.title }}
+                            </strong>
+                        </a>
+                    </div>
+                    <div class=" sm:text-[12px] text-slate-500 truncate">{{ job.company.name }}</div>
+                </div>
+                <div class="flex space-x-10 items-center">
+                    <div class="flex gap-3 text-[12px]">
+                        <div class="bg-slate-100 p-1 rounded"><span>{{ job.salary_written_in_text }}</span></div>
+                        <div class="address bg-slate-100 p-1 rounded">
+                            <span>
+                                {% if job.keywords.all > 2 %}
+                                    {{ job.keywords.all.first }} & {{ job.keywords.all.count }} noi khac
+                                {% else %}
+                                {{ job.keywords.all|join:", " }}
+                                {% endif %}
+
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-">
+                        <a>
+                            <i class="bi bi-heart text-slate-400"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}

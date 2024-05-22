@@ -1,22 +1,19 @@
 .venv
-package-lock.json
-package.json
 
 Use_Case_Scenarios.pdf
 applications_application.png
+README.pdf
 
-/app/theme/*
+app/theme/static_src/node_modules/
 
 # ignore all .pyc files
 *.pyc
 
-README.pdf
 
 app/package-lock.json
 app/package.json
 
 # Byte-compiled / optimized / DLL files
-__pycache__/
 *.py[cod]
 *$py.class
 
