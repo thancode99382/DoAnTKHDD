@@ -6,5 +6,6 @@ app_name = "applications"
 
 urlpatterns = [
     path('post-recruitment/', views.post_recruitment, name='post-recruitment'),
-    path('company/', views.Company.as_view(), name='company'),
+    path('company/<slug:slug>/', views.CompanyDetailView.as_view(), name='company-detail'),
+
 ]

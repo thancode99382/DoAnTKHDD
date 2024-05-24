@@ -77,6 +77,7 @@ class Company(models.Model):
     description = CKEditor5Field('Text', config_name='extends', null=True, blank=True)
     logo = models.ImageField(upload_to='companies/', null=True)
     slug = models.SlugField(max_length=255, unique=True, null=True, blank=True)
+    employee_number = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
         return self.name

@@ -81,7 +81,7 @@
                 <div class="flex items-center space-x-4 p-4 rounded-lg">
                     <div>
                         <p class="text-sm font-light">Bạn là nhà tuyển dụng?</p>
-                        {% if user.employer is not None %}
+                        {% if user.employer %}
 
                           <a class="text-sm font-semibold" href="{% url 'applications:post-recruitment' %}">Đăng tuyển >></a>
                         {% else %}
@@ -96,7 +96,7 @@
                       <!-- Welcome Message and User Actions -->
                       <div class="flex-1">
                         <p class="text-lg font-semibold text-gray-700">Chào mừng,
-                            {% if user.employer is not None %}
+                            {% if user.employer %}
                         	    {{ user.employer.full_name }}
                             {% else %}
                                 {{ user.username }}

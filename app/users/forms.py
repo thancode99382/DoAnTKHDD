@@ -37,7 +37,7 @@ class EmployerForm(forms.ModelForm):
 class CompanyForm(forms.ModelForm):
     class Meta:
         model = Company
-        fields = ('name', 'logo', 'description', 'address', 'phone', 'email')
+        fields = ('name', 'logo', 'description', 'address', 'phone', 'email', 'employee_number')
         widgets = {
             'name': forms.TextInput(
                 attrs={'class': 'block w-full mt-2 p-2 border rounded-md focus:border-blue-500 focus:ring-blue-500'}),
@@ -62,6 +62,16 @@ class CompanyForm(forms.ModelForm):
             'email': 'Email',
         }
 
+    def clean_employee_number(self):
+        employee_number = self.cleaned_data['employee_number']
+        if employee_number:
+            try:
+                min_employee, max_employee = map(int, employee_number.split('-'))
+                if min_employee < 0 or max_employee < 0 or min_employee > max_employee:
+                    raise forms.ValidationError('Số lượng nhân viên không hợp lệ')
+            except ValueError:
+                raise forms.ValidationError('Số lượng nhân viên không hợp lệ')
+        return employee_number + ' nhân viên'
 
 class RecruitmentForm(forms.ModelForm):
     class Meta:
