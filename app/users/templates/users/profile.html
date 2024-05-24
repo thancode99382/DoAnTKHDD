@@ -1,0 +1,241 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Profile
+{% endblock %}
+
+{% block css-path %}
+
+{% endblock %}
+
+{% block content %}
+<div class=" md:px-[200px] px-8 mb-3 pt-12   ">
+
+
+
+
+
+    <div class="grid gap-6 xl:grid-cols-3 ">
+        <div class="flex flex-col order-2 gap-6 xl:order-1 xl:col-span-2">
+
+            <div class="overflow-hidden bg-white rounded-lg">
+
+
+
+
+                <div class="px-5 py-6">
+                    <div>
+                        <div>
+                            <h4 class="mb-3 text-lg font-bold">Cài đặt thông tin cá nhân</h4>
+                            <div class="mb-3 font-medium"><span class="text-red-500">(*)</span>&nbsp;Các thông tin bắt
+                                buộc</div>
+                        </div>
+                        <form>
+
+                            <div>
+                                <div class="mb-3 ">
+                                    <div class="mb-3 ">
+                                        <p class="mb-3 font-medium "> Họ và tên <span class="text-red-500 ">*</span>
+                                        </p>
+                                        <div class="border rounded-lg"> <input
+                                                class="w-full border-none rounded-lg focus:ring-0 "
+                                                placeholder="Nhập họ và tên" name="fullname"> </div>
+
+                                    </div>
+
+                                    <div class="mb-3 ">
+                                        <p class="mb-3 font-medium ">Số điện thoại</p>
+                                        <div class="border rounded-lg"><input
+                                                class="w-full border-none rounded-lg focus:ring-0 " type="text"
+                                                placeholder="Nhập số điện thoại" name="phone" value=""></div>
+
+                                    </div>
+
+                                    <div class="box-item">
+                                        <p class="mb-3 font-medium ">Email</p>
+                                        <div class="border rounded-lg "><input
+                                                class="w-full border-none rounded-lg focus:ring-0 " type="text"> </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="box-submit">
+                                    <button type="submit"
+                                        class="font-medium text-white bg-[#00B14F] py-3 px-6 rounded-lg ">Lưu</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+        </div>
+
+
+        <div class="order-1 xl:col-span-1 xl:order-2 ">
+            <div class="overflow-hidden bg-white rounded-lg">
+
+
+                <div>
+                    <div class="p-6 text-base ">
+
+                        <!--  -->
+                        <div class="box box-white box-setting-sidebar">
+                            <div class="flex gap-3">
+                                <div class="">
+                                    <img class="w-20 h-20 rounded-full "
+                                        src="https://www.topcv.vn/images/avatar-default.jpg" alt="">
+
+                                </div>
+                                <div class="turn-on-job__header-info">
+                                    <div class="text-sm font-normal text-welcome ">Chào bạn trở lại,</div>
+                                    <h4 class="text-base font-bold profile-fullname ">Dat Dong Van</h4>
+                                    <div class="account-type vip">
+                                        <span class="px-2 py-1 text-sm text-white bg-gray-500 rounded-md">
+                                            Tài khoản đã xác thực
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row turn-on-job__body" style="margin-top: 15px">
+                                <input type="hidden" id="currentStatus" value="0">
+                                <div id="on-off-job-waiting" class="space-y-4">
+                                    <div class="flex items-center gap-2 col-xs-12 group-switch">
+
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" value="" class="sr-only peer">
+                                            <div
+                                                class="group peer ring-0  bg-slate-600  rounded-full outline-none duration-1000 after:duration-300 w-10  h-5  shadow-md  peer-focus:outline-none  after:content-[''] after:rounded-full after:absolute after:bg-white   peer-checked:after:rotate-180 after:bg-white  after:outline-none after:h-5 after:w-5 after:top-0 after:left-0 peer-checked:after:translate-x-5    peer-hover:after:scale-95 peer-checked:bg-gradient-to-r peer-checked:from-emerald-500 peer-checked:to-emerald-900">
+
+                                            </div>
+                                        </label>
+
+
+
+                                        <span class="job-waiting-status-text job-off-show">
+                                            <strong class="text-neutral-neutral-40">Đang Tắt tìm việc</strong>
+                                        </span>
+                                        <!-- <span class="job-waiting-status-text job-on-show">
+                                            <strong class="text-highlight">Trạng thái tìm việc đang bật</strong>
+                                        </span> -->
+                                    </div>
+
+                                    <div class="col-xs-12">
+                                        <p class="job-waiting-description" id="job-waiting-text">
+                                            Bật tìm việc giúp hồ sơ của bạn nổi bật hơn và được chú ý nhiều hơn trong
+                                            danh sách tìm kiếm của
+                                            NTD.
+                                        </p>
+
+                                    </div>
+                                    <div class="col-xs-12 group-switch">
+                                        <div class="flex items-center gap-2 col-xs-12 group-switch">
+
+                                            <label class="relative inline-flex items-center cursor-pointer">
+                                                <input type="checkbox" value="" class="sr-only peer">
+                                                <div
+                                                    class="group peer ring-0  bg-slate-600  rounded-full outline-none duration-1000 after:duration-300 w-10  h-5  shadow-md  peer-focus:outline-none  after:content-[''] after:rounded-full after:absolute after:bg-white   peer-checked:after:rotate-180 after:bg-white  after:outline-none after:h-5 after:w-5 after:top-0 after:left-0 peer-checked:after:translate-x-5    peer-hover:after:scale-95 peer-checked:bg-gradient-to-r peer-checked:from-emerald-500 peer-checked:to-emerald-900">
+
+                                                </div>
+                                            </label>
+
+
+
+                                            <span class="job-waiting-status-text">
+                                                <strong id="text-allow-epl-view-cv" class=" text-highlight">
+                                                    Cho phép NTD tìm kiếm hồ sơ
+                                                </strong>
+                                            </span>
+                                            <!-- <span class="job-waiting-status-text job-on-show">
+                                            <strong class="text-highlight">Trạng thái tìm việc đang bật</strong>
+                                        </span> -->
+                                        </div>
+
+                                    </div>
+                                    <div id="box-profile-active" class="col-xs-12">
+                                        <div class="space-y-3 description-allow-employee-search">
+                                            <p>
+                                                Khi có cơ hội việc làm phù hợp, NTD sẽ liên hệ và trao đổi với bạn qua:
+                                            </p>
+                                            <ul>
+                                                <li>Nhắn tin qua Top Connect trên TopCV</li>
+                                                <li>Email và Số điện thoại của bạn</li>
+                                            </ul>
+                                            <div class="banner--app ">
+                                                <img src="https://static.topcv.vn/v4/image/app/banner--app.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="job-waiting-description" id="allow-view-cv-text">
+                                        </div>
+                                        <div>
+                                            <p class="job-waiting-description d-flex border-top ">
+                                                <i class="fa-light fa-circle-info"></i>
+                                                <span> Bạn cần hoàn thiện trên 70% TopCV Profile để bắt đầu tiếp cận với
+                                                    nhà tuyển
+                                                    dụng</span>
+                                            </p>
+                                            <a href="https://www.topcv.vn/p/dat-dong-van-8221907"
+                                                class="btn btn-create-profile btn-sm">Cập nhật TopCV Profile</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="modal fade modal-turn-on-job modal-slide-up" role="dialog" id="modalTurnOnJob"
+                                data-backdrop="static" data-keyboard="false">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-turn-on-job__header">
+                                            <div class="modal-turn-on-job__header--content content">
+                                                <h3 class="content__title">
+                                                    Bật tìm việc ngay để không bỏ lỡ những cơ hội đặc biệt hấp dẫn
+                                                </h3>
+                                                <p class="content__desc">
+                                                    Vui lòng lựa chọn các CV bạn muốn bật tìm việc Hoặc click "Tôi không
+                                                    có nhu cầu" để bỏ qua
+                                                </p>
+                                            </div>
+                                            <div class="modal-turn-on-job__header--image">
+                                                <img src="https://static.topcv.vn/v4/image/turn-on-job/img-header.png"
+                                                    alt="">
+                                            </div>
+                                            <div class="modal-turn-on-job__header--close" id="btn-close-turn-on-job">
+                                                <i class="fa-solid fa-xmark"></i>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <!--  -->
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+</div>
+{% include "core/footer.html" %}
+
+{% endblock %}

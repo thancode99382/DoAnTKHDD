@@ -1,7 +1,7 @@
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
-from django.shortcuts import redirect
+from django.shortcuts import redirect ,render
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -70,3 +70,7 @@ def user_logout(request):
         logout(request)
     return redirect('core:home')
 
+
+
+def user_profile(request):
+    return render(request , 'users/profile.html')
