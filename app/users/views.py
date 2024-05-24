@@ -83,13 +83,10 @@ class RegisterCandidate(generic.CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = "Profile"
-        if self.request.user.candidate:
+        if hasattr(self.request.user, 'candidate'):
             context["profile"] = self.request.user.candidate
-        elif self.request.user.employer:
+        elif hasattr(self.request.user, 'candidate'):
             context["profile"] = self.request.user.employer
-
-        else:
-            context["profile"] = self.request.user
 
         return context
 
