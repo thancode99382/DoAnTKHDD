@@ -32,4 +32,3 @@ def post_recruitment(request):
         form = RecruitmentForm(user=request.user)
     return render(request, "applications/post_recruitment.html", {"form": form})
 
-    pass

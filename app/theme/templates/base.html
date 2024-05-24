@@ -76,56 +76,135 @@
               alt="Flowbite Logo" />
 
           </a>
-          <div class="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
-              {% if user.is_authenticated %}
-                <div class="flex items-center space-x-4 p-4 rounded-lg">
-                    <div>
-                        <p class="text-sm font-light">Bạn là nhà tuyển dụng?</p>
-                        {% if user.employer %}
 
-                          <a class="text-sm font-semibold" href="{% url 'applications:post-recruitment' %}">Đăng tuyển >></a>
-                        {% else %}
-                            <a class="text-sm font-semibold" href="{% url 'users:register-employer' %}">Đăng tuyển >></a>
-                        {% endif %}
-                    </div>
-                    <div class="inline-block w-0.5 self-stretch bg-neutral-100 dark:bg-white/10"></div>
-                  <!-- User Profile Picture -->
-                    <div class="ml-2 flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse items-center">
-                      <img src="https://www.topcv.vn/images/avatar-default.jpg" alt="Profile Picture" class="w-16 h-16 rounded-full border-2 border-[#00B14F] object-cover mr-2">
 
-                      <!-- Welcome Message and User Actions -->
-                      <div class="flex-1">
-                        <p class="text-lg font-semibold text-gray-700">Chào mừng,
-                            {% if user.employer %}
-                        	    {{ user.employer.full_name }}
-                            {% else %}
-                                {{ user.username }}
-                            {% endif %}
-                            </p>
-                        <p class="text-sm text-gray-500">Chúng tôi rất vui khi thấy bạn trở lại.</p>
+          <div class="relative flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
+            {% if user.is_authenticated %}
+            <div class="items-center hidden space-x-4 rounded-lg sm:flex">
+              <div>
+                <p class="text-sm font-light">Bạn là nhà tuyển dụng?</p>
+                {% if user.employer is not None %}
 
-                        <!-- User Action Buttons -->
-                        <div class="mt-2 flex space-x-3">
-                          <a  class="text-white bg-[#00B14F] hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-md text-sm px-4 py-2">View Profile</a>
-{#                          <a  class="text-white bg-[#212F3F] hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 font-medium rounded-md text-sm px-4 py-2">Post a Job</a>#}
-                          <a href="{% url 'users:logout' %}"  class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-md text-sm px-4 py-2">Logout</a>
-                        </div>
-                      </div>
-                    </div>
-                </div>
+                <a class="text-sm font-semibold" href="{% url 'applications:post-recruitment' %}">Đăng tuyển >></a>
                 {% else %}
-                <div class="hidden space-x-3 md:block">
-                  <a type="button" href="{% url 'users:login' %}"
-                    class="text-black focus:ring-4 focus:outline-none border border-[#00B14F] focus:ring-[#00B14F] font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Đăng
-                    nhập</a>
-                  <a type="button" href="{% url 'users:register' %}"
-                    class="text-white focus:ring-4 focus:outline-none border border-[#00B14F] bg-[#00B14F] focus:ring-[#00B14F] font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Đăng
-                    ký</a>
-                  <button type="button"
-                    class="text-white focus:ring-4 focus:outline-none border bg-[#212F3F] focus:ring-blue-300 font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Đăng
-                    tuyển & tìm hồ sơ</button>
+                <a class="text-sm font-semibold" href="{% url 'users:register-employer' %}">Đăng tuyển >></a>
+                {% endif %}
+              </div>
+              <div class="inline-block w-0.5 self-stretch bg-neutral-100 dark:bg-white/10"></div>
+              <!-- User Profile Picture -->
+              <div class="flex items-center ml-2 space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
+
+
+                <button id="btn-userdrop" type="button"
+                  class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-900 rounded-lg cursor-pointer">
+                  <img src="https://www.topcv.vn/images/avatar-default.jpg" alt="Profile Picture"
+                    class="w-10 h-10 rounded-full border-2 border-[#00B14F] object-cover mr-2">
+
+                </button>
+
+
+
+                <!-- Dropdown -->
+
+
+
+
+
+
+                <!-- Welcome Message and User Actions -->
+                <!-- <div class="flex-1">
+                  <p class="text-lg font-semibold text-gray-700">Chào mừng,
+                    {% if user.employer %}
+                    {{ user.employer.full_name }}
+                    {% else %}
+                    {{ user.username }}
+                    {% endif %}
+                  </p>
+                  <p class="text-sm text-gray-500">Chúng tôi rất vui khi thấy bạn trở lại.</p>
+
+
+                  <div class="flex mt-2 space-x-3">
+                    <a
+                      class="text-white bg-[#00B14F] hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-md text-sm px-4 py-2">View
+                      Profile</a>
+
+                    {# <a class="text-white bg-[#212F3F] hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 font-medium rounded-md text-sm px-4 py-2 ">Post Job</a> #}
+
+
+                    <a href="{% url 'users:logout' %}"
+                      class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 focus:ring-4 focus:ring-red-300">Logout</a>
+                  </div>
+                </div> -->
+
+
+              </div>
+
+
+
+              <div
+                class="absolute left-[-70px] z-50 my-4 invisible opacity-0 transition-all duration-300 ease-in-out  p-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg   shadow top-12 right-0 dark:bg-gray-700 "
+                id="user-dropdown-menu">
+
+                <div class="flex pb-3 mb-6 border-b">
+                  <div> <button
+                      class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-900 rounded-lg cursor-pointer ">
+                      <img src="https://www.topcv.vn/images/avatar-default.jpg" alt="Profile Picture"
+                        class="w-10 h-10 rounded-full border-2 border-[#00B14F] object-cover mr-2">
+                    </button> </div>
+                  <div>
+                    <h1 class="font-bold text-[#00B14F]"> {% if user.employer is not None %}
+                      {{ user.employer.full_name }}
+                      {% else %}
+                      {{ user.username }}
+                      {% endif %} </h1>
+                    <p class="text-sm font-normal text-gray-600">
+                       {{ user.email }}</p>
+                  </div>
                 </div>
-              {% endif %}
+                <ul class="flex flex-col gap-3 font-medium " role="none">
+                  <li>
+                    <a href="{% url 'users:profile' %}" class="block px-4 py-4 text-sm text-gray-700 bg-[#f4f5f5] rounded-md " role="menuitem">
+                      <div class="inline-flex items-center gap-2">
+
+                        <span> <i class="bi bi-pencil-square text-[#00B14F]"></i></span> Thông tin cá nhân
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="block px-4 py-4 text-sm text-gray-700 bg-[#f4f5f5] rounded-md " role="menuitem">
+                      <div class="inline-flex items-center gap-2">
+
+                        <span> <i class="bi bi-shield-lock text-[#00B14F]"></i></span> Cài đặt bảo mật
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'users:logout' %}" class="block px-4 py-4 text-sm text-gray-700 bg-[#f4f5f5] rounded-md " role="menuitem">
+                      <div class="inline-flex items-center gap-2">
+
+                        <span> <i class="bi bi-box-arrow-in-right text-[#00B14F]"></i></span> Đăng xuất
+                      </div>
+                    </a>
+                  </li>
+
+
+
+                </ul>
+              </div>
+            </div>
+            {% else %}
+            <div class="hidden space-x-3 md:block">
+              <a type="button" href="{% url 'users:login' %}"
+                class="text-black focus:ring-4 focus:outline-none border border-[#00B14F] focus:ring-[#00B14F] font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Đăng
+                nhập</a>
+              <a type="button" href="{% url 'users:register' %}"
+                class="text-white focus:ring-4 focus:outline-none border border-[#00B14F] bg-[#00B14F] focus:ring-[#00B14F] font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Đăng
+                ký</a>
+              <button type="button"
+                class="text-white focus:ring-4 focus:outline-none border bg-[#212F3F] focus:ring-blue-300 font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Đăng
+                tuyển & tìm hồ sơ</button>
+            </div>
+            {% endif %}
 
             <button id="menu-toggle" data-collapse-toggle="navbar-cta" type="button"
               class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -138,6 +217,8 @@
               </svg>
             </button>
           </div>
+          <!--  -->
+
           <div
             class="items-center justify-between hidden w-full transition-all duration-1000 ease-in-out md:flex md:w-auto md:order-1"
             id="navbar-cta">
@@ -145,7 +226,7 @@
               class="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg md:p-0 bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
                 <a href="#"
-                  class="block py-2 px-3 md:p-0 text-white bg-[#00B14F] rounded md:bg-transparent md:text-[#00B14F] md:dark:text-blue-500"
+                  class=" block py-2 px-3 md:p-0 text-white bg-[#00B14F] rounded md:bg-transparent md:text-[#00B14F] md:dark:text-blue-500"
                   aria-current="page">Việc làm</a>
               </li>
               <li>
@@ -172,6 +253,34 @@
           </div>
         </div>
       </nav>
+
+
+      <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+          const userDrop = document.getElementById('btn-userdrop');
+          const dropMenu = document.getElementById('user-dropdown-menu');
+
+          userDrop.addEventListener('mouseenter', function () {
+            dropMenu.classList.toggle('invisible');
+            dropMenu.classList.toggle('opacity-0');
+
+          });
+
+          dropMenu.addEventListener('mouseleave', function () {
+            dropMenu.classList.toggle('invisible');
+            dropMenu.classList.toggle('opacity-0');
+
+          });
+
+        });
+
+
+
+
+      </script>
+
+
       <script>
         document.addEventListener('DOMContentLoaded', function () {
           const menuToggle = document.getElementById('menu-toggle');
