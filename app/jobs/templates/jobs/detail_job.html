@@ -9,68 +9,266 @@ Nhân viên live stream
 {% endblock %}
 
 {% block content %}
-  <style>
-    .modal {
-      transition: opacity 0.25s ease;
-    }
-    body.modal-active {
-      overflow-x: hidden;
-      overflow-y: visible !important;
-    }
-  </style>
+<style>
+  .modal {
+    transition: opacity 0.25s ease;
+  }
 
-  <!-- MODAL -->
-<div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
-    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-    
-    <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-      
-      <div class=" modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
-        <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-          <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-        </svg>
-        <span class="text-sm">(Esc)</span>
+  body.modal-active {
+    overflow-x: hidden;
+    overflow-y: visible !important;
+  }
+
+
+
+  .checkbox-wrapper-46 input[type="checkbox"] {
+    display: none;
+    visibility: hidden;
+  }
+
+  .checkbox-wrapper-46 .cbx {
+    margin: auto;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  .checkbox-wrapper-46 .cbx span {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .checkbox-wrapper-46 .cbx span:first-child {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    transform: scale(1);
+    vertical-align: middle;
+    border: 1px solid #9098a9;
+    transition: all 0.2s ease;
+  }
+
+  .checkbox-wrapper-46 .cbx span:first-child svg {
+    position: absolute;
+    top: 3px;
+    left: 2px;
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 16px;
+    stroke-dashoffset: 16px;
+    transition: all 0.3s ease;
+    transition-delay: 0.1s;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .checkbox-wrapper-46 .cbx span:first-child:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #00B14F;
+    display: block;
+    transform: scale(0);
+    opacity: 1;
+    border-radius: 50%;
+  }
+
+  .checkbox-wrapper-46 .cbx span:last-child {
+    padding-left: 8px;
+  }
+
+  .checkbox-wrapper-46 .cbx:hover span:first-child {
+    border-color: #00B14F;
+  }
+
+  .checkbox-wrapper-46 .inp-cbx:checked+.cbx span:first-child {
+    background: #00B14F;
+    border-color: #00B14F;
+    animation: wave-46 0.4s ease;
+  }
+
+  .checkbox-wrapper-46 .inp-cbx:checked+.cbx span:first-child svg {
+    stroke-dashoffset: 0;
+  }
+
+  .checkbox-wrapper-46 .inp-cbx:checked+.cbx span:first-child:before {
+    transform: scale(3.5);
+    opacity: 0;
+    transition: all 0.6s ease;
+  }
+
+  @keyframes wave-46 {
+    50% {
+      transform: scale(0.9);
+    }
+  }
+</style>
+
+<!-- MODAL -->
+<div class="fixed inset-0 flex justify-center py-10 modal">
+  <div class="absolute inset-0 bg-gray-900 opacity-50 modal-overlay"></div>
+
+  <div class="z-50  overflow-y-auto bg-white rounded shadow-lg modal-container mx-[100px] 2xl:mx-[409px] ">
+
+    <div class="absolute z-50 flex flex-col items-center mt-4 mr-4 text-sm text-white cursor-pointer modal-close">
+      <svg class="text-white fill-current" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+        viewBox="0 0 18 18">
+        <path
+          d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+        </path>
+      </svg>
+      <span class="text-sm">(Esc)</span>
+    </div>
+
+    <!-- Add margin if you want to see some of the overlay behind the modal-->
+    <div class="text-left modal-content">
+      <!--Title-->
+      <div class="flex justify-between px-6 py-4 shadow-lg ">
+        <p class="text-lg font-bold ">Ứng tuyển <span class="text-[#00B14F]"> Chuyên Viên Kinh Doanh Dịch Vụ Viễn Thông
+            ( Lương Từ 8 - 15 Triệu, Phúc
+            Lợi Đầy Đủ, Không Yêu Cầu Kinh Nghiệm ) </span> </p>
+        <div class="z-50 cursor-pointer modal-close">
+          <svg class="text-black fill-current" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+            viewBox="0 0 18 18">
+            <path
+              d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+            </path>
+          </svg>
+        </div>
       </div>
 
-      <!-- Add margin if you want to see some of the overlay behind the modal-->
-      <div class="modal-content py-4 text-left px-6">
-        <!--Title-->
-        <div class="flex justify-between items-center pb-3">
-          <p class="text-2xl font-bold">Simple Modal!</p>
-          <div class="modal-close cursor-pointer z-50">
-            <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-              <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-            </svg>
+      <!--Body-->
+      <div class="px-6 py-4 space-y-3 ">
+        <div class="mb-3 text-base font-bold text-[#00B14F]"><span> <i class="mr-2 bi bi-person-rolodex"></i> </span>
+          Chọn cv để ứng
+          tuyển
+        </div>
+        <div class="rounded-lg border border-[#00B14F] p-4 transition-all duration-300  ease-in-out space-y-2  ">
+          <div class="checkbox-wrapper-46">
+            <input type="checkbox" id="cbx-46" class="inp-cbx" />
+            <label for="cbx-46" class="cbx"><span>
+                <svg viewBox="0 0 12 10" height="10px" width="12px">
+                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                </svg></span><span class="text-base font-bold text-[#00B14F]">Chọn cv khác trong thư viện của tôi</span>
+            </label>
+          </div>
+          <div class="font-bold"> TopCV profile</div>
+          <div class="text-sm text-red-600"> Hồ sơ chưa hoàn thiện <span class="text-green-600 underline"> tại đây
+            </span></div>
+        </div>
+        <div
+          class="rounded-lg border border-dashed border-[#00B14F] p-4 transition-all duration-300  ease-in-out space-y-2   ">
+          <div class="flex justify-start gap-24 pb-6 border-b checkbox-wrapper-46">
+
+            <div>
+              <input type="checkbox" id="cbx-46" class="inp-cbx" />
+              <label for="cbx-46" class="cbx"><span>
+
+              </label>
+            </div>
+            <div class="flex flex-col justify-center space-y-2 text-center ">
+              <h1 class="font-bold">Tải lên CV từ máy tính, chọn hoặc kéo thả
+              </h1>
+              <p class="font-normal text-gray-600"> Hỗ trợ định dạng .doc, .docx, pdf có kích thước dưới 5MB</p>
+              <input class="hidden" type="file">
+              <div> <button class="px-6 py-1 bg-[#00B14F] text-white rounded-md">Chọn Cv</button></div>
+
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex justify-between font-medium">
+              <div class="text-[#00B14F]">Vui lòng nhập chi tiết </div>
+              <div class="text-red-600"> <span>(*) </span> Thông tin bắt buộc</div>
+            </div>
+            <div>
+              <div>
+                Họ và tên <span class="text-red-600">*</span>
+              </div>
+              <div class="border-gray-600 ">
+                <input type="text"
+                  class="w-full border-2 border-gray-200 rounded-lg outline-none focus:border-gray-200 focus:ring-0 placeholder:text-gray-400"
+                  placeholder="Họ và tên hiện thị với NTD">
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <div>
+                  Email <span class="text-red-600">*</span>
+                </div>
+                <div class="border-gray-600 ">
+                  <input type="text"
+                    class="w-full border-2 border-gray-200 rounded-lg outline-none focus:border-gray-200 focus:ring-0 placeholder:text-gray-400"
+                    placeholder="Email">
+                </div>
+              </div>
+              <div>
+                <div>
+                  Số điện thoại<span class="text-red-600">*</span>
+                </div>
+                <div class="border-gray-600 ">
+                  <input type="text"
+                    class="w-full border-2 border-gray-200 rounded-lg outline-none focus:border-gray-200 focus:ring-0 placeholder:text-gray-400"
+                    placeholder="Số điện thoại">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="space-y-2">
+          <div class="mb-2 text-base font-bold text-[#00B14F]"><span> <i class="mr-2 bi bi-feather"></i> </span> Thư
+            giới thiệu
+          </div>
+          <p class="text-gray-500"> Một thư giới thiệu ngắn gọn, chỉn chu sẽ giúp bạn trở nên chuyên nghiệp và gây ấn
+            tượng hơn với nhà tuyển dụng.</p>
+          <textarea
+            class="w-full border-2 border-gray-200 rounded-lg outline-none focus:border-gray-200 focus:ring-0 placeholder:text-gray-400"
+            placeholder="Viết giới thiệu ngắn gọn về bản thân (điểm mạnh, điểm yếu) và nêu rõ mong muốn, lý do bạn muốn ứng tuyển cho vị trí này."
+            name="" id=""></textarea>
+        </div>
+        <div class="p-4 space-y-2 transition-all duration-300 ease-in-out border border-gray-400 rounded-lg ">
+          <div class="font-bold text-[#D83324] text-base">
+            Lưu ý:
+          </div>
+
+          <div class="text-sm font-semibold text-gray-500">
+            TopCV khuyên tất cả các bạn hãy luôn cẩn trọng trong quá trình tìm việc và chủ động nghiên cứu về thông tin
+            công ty, vị trí việc làm trước khi ứng tuyển.
+            Ứng viên cần có trách nhiệm với hành vi ứng tuyển của mình. Nếu bạn gặp phải tin tuyển dụng hoặc nhận được
+            liên lạc đáng ngờ của nhà tuyển dụng, hãy báo cáo ngay cho TopCV qua email hotro@topcv.vn để được hỗ trợ kịp
+            thời.
+
+            Tìm hiểu thêm kinh nghiệm phòng tránh lừa đảo tại đây.
           </div>
         </div>
 
-        <!--Body-->
-        <p>Modal content can go here</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-
-        <!--Footer-->
-        <div class="flex justify-end pt-2">
-          <button class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">Action</button>
-          <button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">Close</button>
-        </div>
-        
       </div>
+
+      <!--Footer-->
+      <div class="grid grid-cols-6 px-6 py-4">
+        <button class="col-span-1 p-3 px-4 mr-2 bg-transparent bg-gray-100 rounded-lg hover:text-indigo-400">Hủy </button>
+        <button class="col-span-5 p-3 px-4 text-white bg-green-600 rounded-lg modal-close hover:bg-green-500">Nộp hồ sơ ứng tuyển</button>
+      </div>
+
     </div>
   </div>
+</div>
 
-  <!-- -------------------------------END MODAL--------------------------------- -->
+<!-- -------------------------------END MODAL--------------------------------- -->
 
-  <div class="   md:px-[144px] px-8 mb-3    ">
-  <div class="pt-12  grid 2xl:grid-cols-3 gap-6  ">
-    <div class="2xl:col-span-2 flex flex-col gap-6 2xl:order-1 order-2  ">
-      <div class="    rounded-lg bg-white p-6  ">
+<div class=" z-0 md:px-[144px] px-8 mb-3    ">
+  <div class="grid gap-6 pt-12 2xl:grid-cols-3 ">
+    <div class="flex flex-col order-2 gap-6 2xl:col-span-2 2xl:order-1 ">
+      <div class="p-6 bg-white rounded-lg ">
 
-        <div class="font-bold md:text-xl mb-2 md:mb-6">{{ job.title }}</div>
-        <div class=" space-x-3 sm:space-x-36 flex justify-start">
-          <div class="flex gap-2 items-center    ">
+        <div class="mb-2 font-bold md:text-xl md:mb-6">{{ job.title }}</div>
+        <div class="flex justify-start space-x-3 sm:space-x-36">
+          <div class="flex items-center gap-2 ">
             <div
               class="h-10 w-10  bg-gradient-to-b bg-[#00B14F] from-[#00907c] rounded-full flex justify-center items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -84,10 +282,10 @@ Nhân viên live stream
             </div>
             <div class="sm:text-sm text-[10px]">
               <p class="font-light">Mức lương</p>
-              <h1 class=" font-semibold  ">{{ job.salary_written_in_text }} </h1>
+              <h1 class="font-semibold ">{{ job.salary_written_in_text }} </h1>
             </div>
           </div>
-          <div class="flex gap-2 items-center    ">
+          <div class="flex items-center gap-2 ">
             <div
               class="h-10 w-10  bg-gradient-to-b bg-[#00B14F] from-[#00907c] rounded-full flex justify-center items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
@@ -99,18 +297,18 @@ Nhân viên live stream
             <div class="sm:text-sm text-[10px]">
               <p class="font-light">Địa điểm </p>
               <h1 class="font-semibold">
-                  <span>
-                    {% if job.keywords.all > 2 %}
-                        {{ job.keywords.all.first }} & {{ job.keywords.all.count }} noi khac
-                    {% else %}
-                    {{ job.keywords.all|join:", " }}
-                    {% endif %}
+                <span>
+                  {% if job.keywords.all > 2 %}
+                  {{ job.keywords.all.first }} & {{ job.keywords.all.count }} noi khac
+                  {% else %}
+                  {{ job.keywords.all|join:", " }}
+                  {% endif %}
 
-                  </span>
+                </span>
               </h1>
             </div>
           </div>
-          <div class="flex gap-2 items-center    ">
+          <div class="flex items-center gap-2 ">
             <div
               class="h-10 w-10  bg-gradient-to-b bg-[#00B14F] from-[#00907c] rounded-full flex justify-center items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -129,38 +327,38 @@ Nhân viên live stream
           </div>
         </div>
         <div>
-          <div class="  sm:py-6 py-3  font-medium"> <span> <i class="bi bi-clock-fill"></i></span> Hạn nộp hồ sơ:
+          <div class="py-3 font-medium sm:py-6"> <span> <i class="bi bi-clock-fill"></i></span> Hạn nộp hồ sơ:
             10/06/2024</div>
 
         </div>
         <div>
-         <button class="modal-open bg-[#00B14F] flex text-base font-semibold text-white w-full justify-center items-center px-2 py-2  gap-2 rounded-lg"> <span> <i class="bi bi-send"></i></span>Ứng tuyển ngay </button>
+          <button
+            class="modal-open bg-[#00B14F] flex text-base font-semibold text-white w-full justify-center items-center px-2 py-2  gap-2 rounded-lg">
+            <span> <i class="bi bi-send"></i></span>Ứng tuyển ngay </button>
 
         </div>
 
       </div>
 
       <div class=" rounded-lg   bg-white p-[24px]">
-        
+
         <div class="job-detail__information-detail--content">
           <div class="font-bold md:text-xl ">Chi tiết công việc</div>
           <div class="job-description ck-content">
-              {{ job.description|safe }}
+            {{ job.description|safe }}
           </div>
         </div>
       </div>
     </div>
-    <div class="2xl:col-span-1 flex flex-col gap-6  2xl:order-2 order-1">
+    <div class="flex flex-col order-1 gap-6 2xl:col-span-1 2xl:order-2">
 
       <!-- information -->
-      <div class="   rounded-lg bg-white p-5  ">
-        <div class="flex gap-2 items-center ">
+      <div class="p-5 bg-white rounded-lg ">
+        <div class="flex items-center gap-2 ">
           <div>
-              <img class="h-[88px] w-auto p-2 "
-              src="{{ job.company.logo.url }}"
-              alt="">
+            <img class="h-[88px] w-auto p-2 " src="{{ job.company.logo.url }}" alt="">
           </div>
-          <div class="  font-semibold text-slate-800 text-base  ">{{ job.company.name }}</div>
+          <div class="text-base font-semibold text-slate-800">{{ job.company.name }}</div>
         </div>
         <div class="flex gap-2 mt-2">
           <div class="text-[#7F878F] shrink-0 text-sm"> Quy mô: </div>
@@ -172,15 +370,16 @@ Nhân viên live stream
         </div>
         <div>
 
-          <a class=" text-center font-semibold text-base text-[#00B14F] " href="{% url 'applications:company-detail' job.company.slug %}"> Xem trang công ty </a>
+          <a class=" text-center font-semibold text-base text-[#00B14F] "
+            href="{% url 'applications:company-detail' job.company.slug %}"> Xem trang công ty </a>
         </div>
 
       </div>
 
-      <div class="bg-white rounded-lg p-5">
-        <div class="font-bold md:text-xl mb-2 md:mb-6"> Thông tin chung</div>
+      <div class="p-5 bg-white rounded-lg">
+        <div class="mb-2 font-bold md:text-xl md:mb-6"> Thông tin chung</div>
         <div class="flex flex-col gap-5">
-          <div class="flex gap-2 items-center    ">
+          <div class="flex items-center gap-2 ">
             <div
               class="h-10 w-10  bg-gradient-to-b bg-[#00B14F] from-[#00907c] rounded-full flex justify-center items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -194,11 +393,11 @@ Nhân viên live stream
             </div>
             <div class="sm:text-sm text-[10px]">
               <p class="font-light">Cấp bậc </p>
-              <h1 class=" font-semibold  ">Nhân viên </h1>
+              <h1 class="font-semibold ">Nhân viên </h1>
             </div>
           </div>
 
-          <div class="flex gap-2 items-center    ">
+          <div class="flex items-center gap-2 ">
             <div
               class="h-10 w-10  bg-gradient-to-b bg-[#00B14F] from-[#00907c] rounded-full flex justify-center items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -216,7 +415,7 @@ Nhân viên live stream
             </div>
           </div>
 
-          <div class="flex gap-2 items-center    ">
+          <div class="flex items-center gap-2 ">
             <div
               class="h-10 w-10  bg-gradient-to-b bg-[#00B14F] from-[#00907c] rounded-full flex justify-center items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -239,7 +438,7 @@ Nhân viên live stream
               <h1 class="font-semibold"> 2 người </h1>
             </div>
           </div>
-          <div class="flex gap-2 items-center    ">
+          <div class="flex items-center gap-2 ">
             <div
               class="h-10 w-10  bg-gradient-to-b bg-[#00B14F] from-[#00907c] rounded-full flex justify-center items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -257,7 +456,7 @@ Nhân viên live stream
             </div>
           </div>
 
-          <div class="flex gap-2 items-center    ">
+          <div class="flex items-center gap-2 ">
             <div
               class="h-10 w-10  bg-gradient-to-b bg-[#00B14F] from-[#00907c] rounded-full flex justify-center items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -294,4 +493,3 @@ Nhân viên live stream
 <script src="{% static 'jobs/modal.js' %}"></script>
 
 {% endblock script %}
-
