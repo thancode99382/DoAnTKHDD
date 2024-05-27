@@ -28,7 +28,7 @@
                           <a href="{% url 'applications:cv-detail' cv.id %}" class="inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600">View Full CV</a>
                             <a href="#" class="inline-block bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600">Shortlist</a>
                             {% if cv.status == 'Pending' %}
-                            <a href="{% url 'applications:accept-cv' cv.id %}" class="inline-block bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600">Accept</a>
+                            <a href="#' cv.id %}" class="inline-block bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600">Accept</a>
                             {% endif %}
                             {% if cv.status != 'Rejected' %}
 

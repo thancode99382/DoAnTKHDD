@@ -92,3 +92,17 @@ def reject_cv(request, cv_id):
     cv.save()
 
     return redirect("applications:view-applicant-cv")
+
+
+def test(request):
+    return render(request, "applications/searchForm.html"
+                  )
+
+
+def search_job(request):
+    if request.method == 'GET':
+        search = request.GET.get('q')
+        jobs = Job.objects.filter(title__icontains=search)
+        return render(request, 'applications/searchForm.html', {'jobs': jobs, 'q': search})
+    else:
+        return render(request, 'applications/searchForm.html')

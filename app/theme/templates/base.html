@@ -151,7 +151,7 @@
                         class="w-10 h-10 rounded-full border-2 border-[#00B14F] object-cover mr-2">
                     </button> </div>
                   <div>
-                    <h1 class="font-bold text-[#00B14F]"> {% if user.employer is not None %}
+                    <h1 class="font-bold text-[#00B14F]"> {% if user.employer %}
                       {{ user.employer.full_name }}
                       {% else %}
                       {{ user.username }}

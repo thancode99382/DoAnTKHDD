@@ -13,4 +13,5 @@ urlpatterns = [
     path("view-applicant/", views.view_applicant_cv, name="view-applicant-cv"),
     path("cv-detail/<int:pk>/", views.cv_detail, name="cv-detail"),
     path("reject-cv/<int:cv_id>/", views.reject_cv, name="reject-cv"),
+    path("search/", views.search_job, name="search"),
 ]

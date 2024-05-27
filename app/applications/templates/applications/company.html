@@ -11,8 +11,8 @@
 {% block content %}
 <div class=" md:px-[200px] px-8 mb-3 pt-12   ">
 
-  <div class=" bg-white overflow-hidden   rounded-lg mb-6">
-    <div class=" relative">
+  <div class="mb-6 overflow-hidden bg-white rounded-lg ">
+    <div class="relative ">
 
 
       <div><img src="https://static.topcv.vn/v4/image/normal-company/cover/company_cover_1.jpg" alt=""></div>
@@ -27,9 +27,9 @@
       class="bg-gradient-to-l bg-black from-[#00B14F]   text-white flex xl:flex-row flex-col xl:gap-20 gap-5 xl:justify-end xl:items-center  p-6 ">
       <div>
         <div>
-          <h1 class="font-bold  xl:text-xl mb-5"> {{ company.name }} </h1>
+          <h1 class="mb-5 font-bold xl:text-xl"> {{ company.name }} </h1>
         </div>
-        <div class="flex xl:flex-row flex-col text-xs xl:text-base font-semibold xl:gap-6 gap-3">
+        <div class="flex flex-col gap-3 text-xs font-semibold xl:flex-row xl:text-base xl:gap-6">
           <div class="flex gap-3">
             <div> <i class="bi bi-globe"></i></div>
             <div>
@@ -60,10 +60,10 @@
 
 
 
-  <div class="grid xl:grid-cols-3 gap-6  ">
-    <div class="  xl:order-1 order-2  xl:col-span-2 flex flex-col gap-6">
+  <div class="grid gap-6 xl:grid-cols-3 ">
+    <div class="flex flex-col order-2 gap-6 xl:order-1 xl:col-span-2">
 
-      <div class="rounded-lg bg-white overflow-hidden">
+      <div class="overflow-hidden bg-white rounded-lg">
 
 
         <div class=" bg-gradient-to-l bg-black from-[#00B14F] text-white px-5 py-3 font-bold md:text-xl ">Giới thiệu
@@ -73,13 +73,14 @@
         <div class="px-5 py-6">
 
           <p>
-              {% if not company.description|is_empty %}
-              	<div class="container mx-auto w-auto">
-                    <img class="mx-auto w-4/12" src="{% static 'applications/mascot_empty.png' %}" alt="Chưa có thông tin công ty">
-                    <p class="text-center text-slate-500 text-sm">Chưa có thông tin công ty</p>
+              {% if company.description|is_empty %}
+              	<div class="container w-auto mx-auto">
+                    <img class="w-4/12 mx-auto" src="{% static 'applications/mascot_empty.png' %}" alt="Chưa có thông tin công ty">
+                    <p class="text-sm text-center text-slate-500">Chưa có thông tin công ty</p>
                 </div>
+                  {% else %}
+              {{ company.description|safe }}
               {% endif %}
-{#              {{ company.description|safe }}#}
           </p>
 
         </div>
@@ -88,29 +89,29 @@
 
 
 
-      <div class="rounded-lg bg-white overflow-hidden ">
+      <div class="overflow-hidden bg-white rounded-lg ">
 
         <div class=" bg-gradient-to-l bg-black from-[#00B14F] text-white px-5 py-3 font-bold md:text-xl mb-2 md:mb-6">
           Tuyển dụng</div>
 
 
-        <div class="flex flex-col gap-2">
-          <!-- ITEM VIỆC LÀM -->
-            {% for recruitment_item in recruitment.all %}
+<div class="flex flex-col gap-2">
+<!-- ITEM VIỆC LÀM -->
+{% for recruitment_item in recruitment.all %}
               <div class="bg-[#F2FBF6] rounded-md p-3 m-[10px] border hover:border-[#00B14F]    ">
-                <div class="flex gap-3 items-center">
+                <div class="flex items-center gap-3">
                   <a>
                     <div class="box-company-logo  h-[70px] w-[70px] ">
                       <div class="avatar shrink-0">
                         <img
                           src="{{ company.logo.url }}"
-                          class=" ">
+                          class="">
                       </div>
                       <div>
                       </div>
                     </div>
                   </a>
-                  <div class="overflow-hidden space-y-2  ">
+                  <div class="space-y-2 overflow-hidden ">
                     <div class="space-y-2">
                       <div>
                         <a>
@@ -158,8 +159,8 @@
       </div>
     </div>
 
-    <div class="xl:col-span-1 xl:order-2 order-1  ">
-      <div class="rounded-lg bg-white overflow-hidden">
+    <div class="order-1 xl: xl:order-2 ">
+      <div class="overflow-hidden bg-white rounded-lg">
 
         <div class=" bg-gradient-to-l bg-black from-[#00B14F] text-white px-5 py-3 font-bold md:text-xl mb-2 "> Thông
           tin liên hệ </div>
@@ -171,18 +172,18 @@
 
       </div>
 
-      <div class="rounded-lg bg-white overflow-hidden mt-6">
+      <div class="mt-6 overflow-hidden bg-white rounded-lg">
 
         <div class=" bg-gradient-to-l bg-black from-[#00B14F] text-white px-5 py-3 font-bold md:text-xl mb-2 "> Chia sẻ
           công ty tới bạn bè </div>
         <div>
-          <div class="p-3 text-base  ">
+          <div class="p-3 text-base ">
             <div class="space-y-2">
               <p class="font-semibold ">Sao chép đường dẫn</p>
-              <div class="flex gap-3 items-center border rounded-lg px-3 py-1">
+              <div class="flex items-center gap-3 px-3 py-1 border rounded-lg">
                 <input
                   value="{{ request.build_absolute_uri }}"
-                  class="outline-none focus:ring-0  border-none w-full">
+                  class="w-full border-none outline-none focus:ring-0">
                 <div class="btn-copy">
                   <button class="btn-copy-url"><i class="bi bi-clipboard"></i></button>
                 </div>
@@ -211,6 +212,10 @@
   </div>
 
 </div>
+
+
+
+
 {% include "core/footer.html" %}
 
 {% endblock %}

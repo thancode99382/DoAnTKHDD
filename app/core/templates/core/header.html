@@ -13,14 +13,15 @@
             dành cho bạn.
           </h2>
           <div class="form-search ">
-            <form id="frm-search-job" method="GET" onsubmit="return false;">
+            <form id="frm-search-job" method="GET" action="{% url 'applications:search' %}">
+                {% csrf_token %}
               <div class="group-search flex items-center p-2 rounded-xl bg-white md:w-[500px]  ">
                 <div class="item item-search">
                   <div class="icon">
                     <i class="fa-regular fa-magnifying-glass"></i>
                   </div>
-                  <input class="border-none w-28 sm:w-32 focus:outline-none focus:ring-0 md:w-48" value=""
-                    placeholder="Vị trí ứng tuyển" id="keyword" autocomplete="off">
+                    <input name="q" class="border-none w-28 sm:w-32 focus:outline-none focus:ring-0 md:w-48" value=""
+                      placeholder="Vị trí ứng tuyển" id="keyword" autocomplete="off">
                 </div>
                 <div class="item search-city">
                   <div class="icon">
