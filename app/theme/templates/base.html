@@ -83,8 +83,7 @@
             <div class="items-center hidden space-x-4 rounded-lg sm:flex">
               <div>
                 <p class="text-sm font-light">Bạn là nhà tuyển dụng?</p>
-                {% if user.employer is not None %}
-
+                {% if user.employer  %}
                 <a class="text-sm font-semibold" href="{% url 'applications:post-recruitment' %}">Đăng tuyển >></a>
                 {% else %}
                 <a class="text-sm font-semibold" href="{% url 'users:register-employer' %}">Đăng tuyển >></a>
@@ -174,10 +173,24 @@
                     <a href="#" class="block px-4 py-4 text-sm text-gray-700 bg-[#f4f5f5] rounded-md " role="menuitem">
                       <div class="inline-flex items-center gap-2">
 
-                        <span> <i class="bi bi-shield-lock text-[#00B14F]"></i></span> Cài đặt bảo mật
+                        <span>
+
+                            <i class="bi bi-shield-lock text-[#00B14F]"></i></span> Cài đặt bảo mật
                       </div>
                     </a>
                   </li>
+                    {% if user.employer %}
+
+                    <li>
+                    <a href="{% url 'applications:view-applicant-cv' %}" class="block px-4 py-4 text-sm text-gray-700 bg-[#f4f5f5] rounded-md " role="menuitem">
+                      <div class="inline-flex items-center gap-2">
+
+                        <span> <i class="bi bi-bell text-[#00B14F]"></i></span> Ứng viên đã ứng tuyển
+                      </div>
+                    </a>
+                  </li>
+                    {% endif %}
+
                   <li>
                     <a href="{% url 'users:logout' %}" class="block px-4 py-4 text-sm text-gray-700 bg-[#f4f5f5] rounded-md " role="menuitem">
                       <div class="inline-flex items-center gap-2">

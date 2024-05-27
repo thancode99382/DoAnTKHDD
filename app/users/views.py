@@ -1,13 +1,11 @@
+from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic
-from django.contrib.auth.models import User
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 
 from jobs.models import Company
 from users.forms import CustomUserCreationForm, EmployerForm, CompanyForm, CandidateForm
@@ -44,6 +42,7 @@ class Register(generic.CreateView):
         return response
 
 
+
 class RegisterEmployer(generic.CreateView):
     form_class = EmployerForm
     success_url = reverse_lazy("core:home")
@@ -69,10 +68,12 @@ class RegisterEmployer(generic.CreateView):
         return redirect("core:home")
 
 
+@login_required
 def user_logout(request):
     if request.user.is_authenticated:
         logout(request)
     return redirect("core:home")
+
 
 
 class RegisterCandidate(generic.CreateView):

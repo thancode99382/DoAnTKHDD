@@ -21,7 +21,16 @@ class JobAdmin(admin.ModelAdmin):
         super().save_model(request, obj, form, change)
 
 
+class JobInline(admin.TabularInline):
+    model = Job
+    extra = 0
+
+
 class CompanyAdmin(admin.ModelAdmin):
+    inlines = [
+        JobInline,
+    ]
+
     def save_model(self, request, obj, form, change):
         if not obj.slug:
             obj.slug = slugify(obj.name)
