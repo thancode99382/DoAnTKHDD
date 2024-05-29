@@ -1,7 +1,7 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
-# Create your models here.
 class Candidate(models.Model):
     user = models.OneToOneField("auth.User", on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to="avatar_candidate/", null=True, blank=True)

@@ -13,7 +13,7 @@
             dành cho bạn.
           </h2>
           <div class="form-search ">
-            <form id="frm-search-job" method="GET" action="{% url 'applications:search' %}">
+            <form id="frm-search-job" method="GET" action="{% url 'applications:search-keyword' %}">
                 {% csrf_token %}
               <div class="group-search flex items-center p-2 rounded-xl bg-white md:w-[500px]  ">
                 <div class="item item-search">
@@ -30,8 +30,8 @@
                   <select name="city" id="city" class=" border-none sm:w-32 md:w-48 focus:outline-none focus:ring-0"
                     tabindex="-1" aria-hidden="true">
                     <option value="">Tất cả địa điểm</option>
-                    <option value="1">Hà Nội</option>
-                    <option value="2">Hồ Chí Minh</option>
+                    <option value="Hà Nội">Hà Nội</option>
+                    <option value="Hồ Chí Minh">Hồ Chí Minh</option>
 
                   </select>
                 </div>

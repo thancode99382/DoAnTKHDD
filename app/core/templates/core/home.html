@@ -35,37 +35,68 @@ Home
           <div class="flex items-center mt-3">
 
             <button
-              class=" text-white bg-[#00B14F]  focus:outline-none focus:ring-4 focus:ring-[#00B14F] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 ">
+              class="job-filter-button text-white bg-[#00B14F]  focus:outline-none focus:ring-4 focus:ring-[#00B14F] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 ">
               Ngẫu Nhiên
             </button>
             <button
-              class=" text-black bg-[#E9EAEC]  focus:outline-none hover:ring-1 hover:ring-[#00B14F] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
+              class="job-filter-button text-black bg-[#E9EAEC]  focus:outline-none hover:ring-1 hover:ring-[#00B14F] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
               Hà Nội
             </button>
             <button
-              class=" text-black bg-[#E9EAEC]  focus:outline-none hover:ring-1 hover:ring-[#00B14F] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
-              Thành phố Hồ Chí Minh
+              class="job-filter-button text-black bg-[#E9EAEC]  focus:outline-none hover:ring-1 hover:ring-[#00B14F] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
+              Hồ Chí Minh
             </button>
             <button
-              class=" text-black bg-[#E9EAEC]  focus:outline-none hover:ring-1 hover:ring-[#00B14F] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
-              Miền Bắc
-            </button>
-            <button
-              class=" text-black bg-[#E9EAEC]  focus:outline-none hover:ring-1 hover:ring-[#00B14F] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
-              Miền Nam
+              class="job-filter-button text-black bg-[#E9EAEC]  focus:outline-none hover:ring-1 hover:ring-[#00B14F] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
+              Đà nẵng
             </button>
 
           </div>
           <div class="next-location btn-slick-arrow"><i class="fa-solid fa-angle-right"></i></div>
         </div>
       </div>
-      <div>
-        <div class="mt-3 grid 2xl:grid-cols-3  min-[1800px]:grid-cols-4">
-          <!-- ITEM VIỆC LÀM -->
-            {% include 'jobs/top_jobs.html' with top_jobs=top_jobs %}
 
+      <div>
+        <div class="mt-3 grid 2xl:grid-cols-3  min-[1800px]:grid-cols-4"  id="job-results">
+          <!-- ITEM VIỆC LÀM -->
+{#            {% include 'jobs/top_jobs.html' with top_jobs=top_jobs %}#}
         </div>
       </div>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            function loadJobs(keyword) {
+                $.ajax({
+                    url: "/jobs/filter-job-by-keyword/" + keyword + "/",
+                    type: "GET",
+                    success: function(data) {
+                        // Update the job results container with the received HTML
+                        $("#job-results").html(data.html); // Use data.html to update the content
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error occurred: " + error);
+                    }
+                });
+            }
+            function activateButton(button) {
+                {# Remove common classes bg-[#E9EAEC] #}
+                $(".job-filter-button").removeClass("text-white bg-[#00B14F]").addClass("text-black bg-[#E9EAEC]");
+                {# Add class for an activate button #}
+                $(button).removeClass("text-black bg-[#E9EAEC]").addClass("text-white bg-[#00B14F]");
+            }
+
+            // Trigger the first button click when the page loads
+            var initialKeyword = $(".job-filter-button:first").text().trim();
+            loadJobs(initialKeyword);
+            activateButton($(".job-filter-button:first"));
+
+            $(".job-filter-button").click(function() {
+                var keyword = $(this).text().trim(); // Extract text inside the button
+                loadJobs(keyword);
+                activateButton(this);
+            });
+        });
+        </script>
+
       <!-- top companies -->
       <div class="py-3">
         <div class="py-6">

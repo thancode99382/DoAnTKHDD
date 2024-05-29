@@ -1,6 +1,10 @@
 from django.shortcuts import redirect
+from django.http import JsonResponse
+from django.template.loader import render_to_string
+
 from applications.models import CV
 from applications.forms import CVForm
+from django.db.models import Q
 
 from users.forms import CompanyForm
 from .models import *
@@ -41,3 +45,15 @@ def create_company(request):
             form.save()
             return redirect("users:register-employer")
     return redirect("core:home")
+
+
+def filter_job_by_keyword(request, keyword):
+    if keyword.lower() == "ngẫu nhiên":
+        jobs = Job.objects.all()
+    else:
+        jobs = Job.objects.filter(
+            Q(title__icontains=keyword) | Q(description__icontains=keyword)
+        )
+
+    rendered_html = render_to_string('jobs/top_jobs.html', {'top_jobs': jobs})
+    return JsonResponse({'html': rendered_html})

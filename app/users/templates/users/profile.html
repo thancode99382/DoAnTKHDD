@@ -25,55 +25,93 @@ Profile
                                 buộc</div>
                         </div>
 {#                        {{ form.as_p }}#}
-                        <form method="post" enctype="multipart/form-data">
+                        
+                          <form method="post" enctype="multipart/form-data">
                             {% csrf_token %}
-                        {% if profile %}
-                        	<div class="mb-3">
+                            {% if profile %}
+                              <div class="mb-3">
                                 <div class="mb-3">
-                                    <p class="mb-3 font-medium "> Họ và tên <span class="text-red-500 ">*</span>
-                                    </p>
-                                    <div class="border rounded-lg">
-                                        <input type="text" readonly class="w-full border-none rounded-lg focus:ring-0" value="{{ profile.full_name }}" />
-                                    </div>
+                                  <p class="mb-3 font-medium">Họ và tên <span class="text-red-500">*</span></p>
+                                  <div class="border rounded-lg">
+                                    <input type="text" id="full_name" readonly class="w-full border-none rounded-lg focus:ring-0" value="{{ profile.full_name }}" />
+                                  </div>
                                 </div>
-                            </div>
-                            <div class="mb-3">
+                              </div>
+                              <div class="mb-3">
                                 <div class="mb-3">
-                                    <p class="mb-3 font-medium "> Số điện thoại <span class="text-red-500 ">*</span>
-                                    </p>
-                                    <div class="border rounded-lg">
-                                        <input type="text" readonly class="w-full border-none rounded-lg focus:ring-0" value="{{ profile.phone }}" />
-                                    </div>
+                                  <p class="mb-3 font-medium">Số điện thoại <span class="text-red-500">*</span></p>
+                                  <div class="border rounded-lg">
+                                    <input type="text" id="phone" readonly class="w-full border-none rounded-lg focus:ring-0" value="{{ profile.phone }}" />
+                                  </div>
                                 </div>
-                            </div>
-                        {% else %}
-                            {% for field in form %}
+                              </div>
+                            {% else %}
+                              {% for field in form %}
                                 <div>
-                                    <div class="mb-3 ">
-                                        <div class="mb-3 ">
-                                             <label for="{{ field.id_for_label }}"
-                               class="mb-3 font-medium">{{ field.label }} <span class="text-red-500 ">*</span></label>
-                                            <div class="border rounded-lg">
-                                                {{ field|add_class:"w-full border-none rounded-lg focus:ring-0" }}
-                                            </div>
-                                        </div>
+                                  <div class="mb-3">
+                                    <div class="mb-3">
+                                      <label for="{{ field.id_for_label }}" class="mb-3 font-medium">{{ field.label }} <span class="text-red-500">*</span></label>
+                                      <div class="border rounded-lg">
+                                        {{ field|add_class:"w-full border-none rounded-lg focus:ring-0" }}
+                                      </div>
                                     </div>
+                                  </div>
                                 </div>
                                 {% if field.errors %}
-                                    <div class="mt-2 text-red-600 text-sm">
-                                        {{ field.errors }}
-                                    </div>
+                                  <div class="mt-2 text-red-600 text-sm">
+                                    {{ field.errors }}
+                                  </div>
                                 {% endif %}
-                            {% endfor %}
-                        {% endif %}
-                        {% if profile %}
+                              {% endfor %}
+                            {% endif %}
+                            {% if profile %}
+                              <div>
+                                <button type="button" id="edit-button" class="font-medium text-white bg-[#00B14F] py-3 px-6 rounded-lg">Chỉnh sửa</button>
+                                <button type="button" id="confirm-button" class="font-medium text-white bg-[#00B14F] py-3 px-6 rounded-lg hidden">Xác nhận</button>
+                              </div>
                             {% else %}
-                         <div class="box-submit">
-                                        <button type="submit"
-                                            class="font-medium text-white bg-[#00B14F] py-3 px-6 rounded-lg ">Lưu</button>
-                                    </div>
-                        {% endif %}
-                        </form>
+                              <div class="box-submit">
+                                <button type="submit" class="font-medium text-white bg-[#00B14F] py-3 px-6 rounded-lg">Lưu</button>
+                              </div>
+                            {% endif %}
+                          </form>
+                          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+                           <script>
+                            $(document).ready(function() {
+                                $('#edit-button').on('click', function() {
+                                    $('#full_name, #phone').prop('readonly', false);
+                                    $('#edit-button').addClass('hidden');
+                                    $('#confirm-button').removeClass('hidden');
+                                    $('#full_name').focus()
+                                });
+                    
+                                $('#confirm-button').on('click', function() {
+                                    var formData = new FormData($('#profile-form')[0]);
+                                    $.ajax({
+                                        url: "{% url 'users:profile-update' %}", // Update with your Django view URL
+                                        type: 'POST',
+                                        data: formData,
+                                        processData: false,
+                                        contentType: false,
+                                        headers: {
+                                            'X-CSRFToken': '{{ csrf_token }}'
+                                        },
+                                        success: function(response) {
+                                            // Handle success
+                                            alert('Profile updated successfully');
+                                            $('#full_name, #phone').prop('readonly', true);
+                                            $('#edit-button').removeClass('hidden');
+                                            $('#confirm-button').addClass('hidden');
+                                        },
+                                        error: function(xhr, status, error) {
+                                            // Handle error
+                                            alert('An error occurred: ' + error);
+                                        }
+                                    });
+                                });
+                            });
+                          </script>
+
                     </div>
 
 

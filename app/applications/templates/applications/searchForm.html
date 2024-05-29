@@ -5,7 +5,8 @@
 <div
   style="background-image: url('https://static.topcv.vn/v4/image/welcome/box-flash-badge/cover.png'); background-repeat: no-repeat ; background-position: center; background-size: cover; ">
   <div class="sm:containerc  px-6 sm:px-[144px] py-6 ">
-    <div>
+    <form method="get" action="{% url 'applications:search-keyword' %}">
+        {% csrf_token %}
       <div class="flex flex-col gap-3 2xl:grid 2xl:grid-cols-12">
 
         <div class="flex items-center justify-around col-span-6 p-2 bg-white rounded-md ">
@@ -13,20 +14,20 @@
             <div class="icon">
               <i class="fa-regular fa-magnifying-glass"></i>
             </div>
-            <input class="border-none focus:outline-none focus:ring-0 " value="" placeholder="Vị trí ứng tuyển"
+            <input name="q" class="border-none focus:outline-none focus:ring-0 " value="{{ q }}" placeholder="Vị trí ứng tuyển"
               id="keyword" autocomplete="off">
           </div>
           <div class=" item">
             <div class="icon">
               <i class="fa-regular fa-location-dot"></i>
             </div>
-            <select name="city" id="city" class="border-none focus:outline-none focus:ring-0" tabindex="-1"
-              aria-hidden="true">
-              <option value="">Tất cả địa điểm</option>
-              <option value="1">Hà Nội</option>
-              <option value="2">Hồ Chí Minh</option>
 
+            <select name="city" id="city" class="border-none focus:outline-none focus:ring-0" tabindex="-1" aria-hidden="true">
+                <option value="" {% if search_keyword == "" %}selected{% endif %}>Tất cả địa điểm</option>
+                <option value="Hà Nội" {% if search_keyword == "Hà Nội" %}selected{% endif %}>Hà Nội</option>
+                <option value="Hồ Chí Minh" {% if search_keyword == "Hồ Chí Minh" %}selected{% endif %}>Hồ Chí Minh</option>
             </select>
+
           </div>
         </div>
 
@@ -36,13 +37,19 @@
             <div class="icon">
               <i class="fa-regular fa-location-dot"></i>
             </div>
-            <select name="city" id="city" class="border-none focus:outline-none focus:ring-0" tabindex="-1"
-              aria-hidden="true">
-              <option value="">Tất cả kinh nghiệm </option>
-              <option value="1">Hà Nội</option>
-              <option value="2">Hồ Chí Minh</option>
+            
+            <select name="experience" id="city" class="border-none focus:outline-none focus:ring-0" tabindex="-1" aria-hidden="true">
+              <option value="" {% if search_experience == "" %}selected{% endif %}>Tất cả kinh nghiệm</option>
+              <option value="0" {% if search_experience == "0" %}selected{% endif %}>Chưa có kinh nghiệm</option>
+              <option value="<1" {% if search_experience == "<1" %}selected{% endif %}>Dưới 1 năm</option>
+              <option value="1" {% if search_experience == "1" %}selected{% endif %}>1 năm</option>
+              <option value="2" {% if search_experience == "2" %}selected{% endif %}>2 năm</option>
+              <option value="3" {% if search_experience == "3" %}selected{% endif %}>3 năm</option>
+              <option value="4" {% if search_experience == "4" %}selected{% endif %}>4 năm</option>
+              <option value="5" {% if search_experience == "5" %}selected{% endif %}>5 năm</option>
+              <option value=">5" {% if search_experience == ">5" %}selected{% endif %}>Trên 5 năm</option>
+          </select>
 
-            </select>
           </div>
         </div>
 
@@ -51,7 +58,7 @@
             <div class="icon">
               <i class="fa-regular fa-location-dot"></i>
             </div>
-            <select name="city" id="city" class="border-none focus:outline-none focus:ring-0" tabindex="-1"
+            <select name="salary" id="city" class="border-none focus:outline-none focus:ring-0" tabindex="-1"
               aria-hidden="true">
               <option value="">Tất cả mức lương</option>
               <option value="1">Hà Nội</option>
@@ -60,11 +67,11 @@
             </select>
           </div>
         </div>
-        <button class="bg-[#00B14F] font-semibold text-lg  px-3 py-3 text-white  rounded-md col-span-2 ">Tìm kiếm</button>
+        <button type="submit" class="bg-[#00B14F] font-semibold text-lg  px-3 py-3 text-white  rounded-md col-span-2 ">Tìm kiếm</button>
 
       </div>
 
-    </div>
+    </form>
 
 
   </div>
@@ -112,6 +119,17 @@
                                 {{ job.salary_written_in_text }}
                             </span>
                         </div>
+                        <div class="address bg-slate-100 p-1 rounded inline-block">
+                            <span>
+                                {% if job.keywords.all > 2 %}
+                                    {{ job.keywords.all.first }} & {{ job.keywords.all.count }} noi khac
+                                {% else %}
+                                {{ job.keywords.all|join:", " }}
+                                {% endif %}
+
+                            </span>
+                        </div>
+                        <br>
                         <a href="{% url 'jobs:detail-job' job.slug %}" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition duration-200">
                             Xem chi tiết
                         </a>

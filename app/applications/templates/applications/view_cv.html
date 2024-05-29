@@ -20,6 +20,8 @@
                     bg-yellow-100 text-yellow-800
                 {% elif cv.status == 'Rejected' %}
                     bg-red-100 text-red-800
+                  {% elif cv.status == 'Accepted' %}
+                    bg-green-100 text-green-800
                 {% endif %}
                   rounded-full px-3 py-1 inline-block
                   ">Status: {{ cv.status }}</p>
@@ -27,11 +29,10 @@
                         <div class="mt-4">
                           <a href="{% url 'applications:cv-detail' cv.id %}" class="inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600">View Full CV</a>
                             <a href="#" class="inline-block bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600">Shortlist</a>
-                            {% if cv.status == 'Pending' %}
-                            <a href="#' cv.id %}" class="inline-block bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600">Accept</a>
+                            {% if cv.status != 'Accepted' %}
+                            <a href="{% url 'applications:accept-cv' cv.id %}" class="inline-block bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600">Accept</a>
                             {% endif %}
                             {% if cv.status != 'Rejected' %}
-
                             <a href="{% url 'applications:reject-cv' cv.id %}" class="inline-block bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600">Reject</a>
                             {% endif %}
                         </div>

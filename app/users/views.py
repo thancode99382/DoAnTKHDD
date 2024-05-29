@@ -6,6 +6,7 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic
+from django.http import JsonResponse
 
 from jobs.models import Company
 from users.forms import CustomUserCreationForm, EmployerForm, CompanyForm, CandidateForm
@@ -42,7 +43,6 @@ class Register(generic.CreateView):
         return response
 
 
-
 class RegisterEmployer(generic.CreateView):
     form_class = EmployerForm
     success_url = reverse_lazy("core:home")
@@ -58,7 +58,8 @@ class RegisterEmployer(generic.CreateView):
     def form_valid(self, form):
         employer = form.save(commit=False)
         employer.user = self.request.user
-        employer.company = Company.objects.get(id=self.request.POST.get("company"))
+        employer.company = Company.objects.get(
+            id=self.request.POST.get("company"))
         gender = self.request.POST.get("gender")
         gender_bool = True if gender == "male" else False
         employer.gender = gender_bool
@@ -75,7 +76,6 @@ def user_logout(request):
     return redirect("core:home")
 
 
-
 class RegisterCandidate(generic.CreateView):
     form_class = CandidateForm
     success_url = reverse_lazy("users:profile")
@@ -84,9 +84,9 @@ class RegisterCandidate(generic.CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = "Profile"
-        if hasattr(self.request.user, 'candidate'):
+        if hasattr(self.request.user, "candidate"):
             context["profile"] = self.request.user.candidate
-        elif hasattr(self.request.user, 'candidate'):
+        elif hasattr(self.request.user, "candidate"):
             context["profile"] = self.request.user.employer
 
         return context
@@ -97,3 +97,23 @@ class RegisterCandidate(generic.CreateView):
         candidate.save()
         messages.success(self.request, "Profile updated successfully")
         return redirect("users:profile")
+
+
+def change_information(request):
+    if request.method == "POST":
+        full_name = request.POST.get("full_name")
+        phone = request.POST.get("phone")
+        if hasattr(request.user, "candidate"):
+            candidate = request.user.candidate
+            candidate.full_name = full_name
+            candidate.phone = phone
+            candidate.save()
+            return JsonResponse({"message": "Profile updated successfully"}, status=200)
+        elif hasattr(request.user, "employer"):
+            employer = request.user.employer
+            employer.full_name = full_name
+            employer.phone = phone
+            employer.save()
+            return JsonResponse({"message": "Profile updated successfully"}, status=200)
+
+    return JsonResponse({"message": "Profile updated successfully"}, status=200)

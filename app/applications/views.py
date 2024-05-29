@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.views import generic
+from django.db.models import Q
 
 from applications.forms import CVForm
 from applications.models import CV
@@ -94,15 +95,75 @@ def reject_cv(request, cv_id):
     return redirect("applications:view-applicant-cv")
 
 
-def test(request):
-    return render(request, "applications/searchForm.html"
-                  )
+def accept_cv(request, cv_id):
+    cv = CV.objects.get(pk=cv_id)
+    cv.status = "Accepted"
+    cv.save()
+    return redirect("applications:view-applicant-cv")
 
 
 def search_job(request):
-    if request.method == 'GET':
-        search = request.GET.get('q')
+    if request.method == "GET":
+        search = request.GET.get("q")
         jobs = Job.objects.filter(title__icontains=search)
-        return render(request, 'applications/searchForm.html', {'jobs': jobs, 'q': search})
+        return render(
+            request, "applications/searchForm.html", {
+                "jobs": jobs, "q": search}
+        )
     else:
-        return render(request, 'applications/searchForm.html')
+        return render(request, "applications/searchForm.html")
+
+
+def search_job_keyword(request):
+    if request.method == "GET":
+        search_title = request.GET.get("q", "")
+        search_keyword = request.GET.get("city", "")
+        search_experience = request.GET.get("experience", "")
+
+        jobs = Job.objects.all()
+
+        if search_experience:
+            if search_experience == "<1":
+                jobs = jobs.filter(experience_min__lte=1)
+            elif search_experience == ">5":
+                jobs = jobs.filter(experience_min__gt=5)
+            else:
+                try:
+                    experience = int(search_experience)
+                    if experience == 0:
+                        jobs = jobs.filter(
+                            experience_min__isnull=True, experience_max__isnull=True
+                        )
+                    else:
+                        jobs = jobs.filter(
+                            Q(experience_min__gte=experience)
+                            & Q(experience_max__lte=experience)
+                        )
+                except ValueError:
+                    return redirect("core:home")
+
+        if search_title:
+            jobs = jobs.filter(title__icontains=search_title)
+
+        if search_keyword:
+            jobs = jobs.filter(keywords__name__icontains=search_keyword)
+
+        return render(
+            request,
+            "applications/searchForm.html",
+            {
+                "jobs": jobs,
+                "q": search_title,
+                "search_experience": search_experience,
+                "search_keyword": search_keyword,
+            },
+        )
+
+
+class CompanyListView(generic.ListView):
+    model = Company
+    template_name = "applications/companies_list.html"
+    context_object_name = "companies"
+    paginate_by = 10
+    ordering = ["-created_at"]
+    extra_context = {"title": "Company List"}

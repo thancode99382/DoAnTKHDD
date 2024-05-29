@@ -1,13 +1,10 @@
-
 #!/bin/bash
+if [ -f /home/duchi/Programming/DoAnTKHDT/runserver.pid ]; then
+	kill $(cat /home/duchi/Programming/DoAnTKHDT/runserver.pid)
+	rm /home/duchi/Programming/DoAnTKHDT/runserver.pid
+fi
 
-# Read the PIDs from the files
-RUNSERVER_PID=$(cat runserver.pid)
-TAILWIND_PID=$(cat tailwind.pid)
-
-# Kill the processes
-kill $RUNSERVER_PID
-kill $TAILWIND_PID
-
-# Optionally, remove the PID files
-rm runserver.pid tailwind.pid
+if [ -f /home/duchi//Programming/DoAnTKHDT/tailwind.pid ]; then
+	kill $(cat /home/duchi/Programming/DoAnTKHDT/tailwind.pid)
+	rm /home/duchi/Programming/DoAnTKHDT/tailwind.pid
+fi

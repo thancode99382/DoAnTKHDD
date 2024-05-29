@@ -12,4 +12,5 @@ urlpatterns = [
     path(
         "register-employer/", views.RegisterEmployer.as_view(), name="register-employer"
     ),
+    path("profile-update/", views.change_information, name="profile-update"),
 ]
