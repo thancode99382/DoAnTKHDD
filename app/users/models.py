@@ -90,6 +90,13 @@ POSITION_CHOICES = [
 ]
 
 
+class Location(models.Model):
+    name = models.CharField(max_length=255, choices=ADDRESS_CHOICES, default="HCM")
+
+    def __str__(self):
+        return self.name
+
+
 class Employer(models.Model):
     user = models.OneToOneField("auth.User", on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to="avatar_employer/", null=True, blank=True)
@@ -99,9 +106,7 @@ class Employer(models.Model):
     position = models.CharField(
         max_length=3, choices=POSITION_CHOICES, default="NV", null=True, blank=True
     )
-    work_location = models.CharField(
-        max_length=255, choices=ADDRESS_CHOICES, default="HCM", null=True, blank=True
-    )
+    work_location = models.ManyToManyField(Location, blank=True, related_name="work_location", null=True, default="HCM")
     full_name = models.CharField(max_length=255, null=True, blank=True)
     gender = models.BooleanField(default=True)
 

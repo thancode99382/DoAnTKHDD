@@ -57,3 +57,13 @@ def filter_job_by_keyword(request, keyword):
 
     rendered_html = render_to_string('jobs/top_jobs.html', {'top_jobs': jobs})
     return JsonResponse({'html': rendered_html})
+
+
+def add_keyword(request):
+    keyword = request.GET.get('new-keyword')
+    try:
+        Keyword.objects.get_or_create(name=keyword)
+    except Exception as e:
+        print(e)
+
+    return redirect("applications:post-recruitment")

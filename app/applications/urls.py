@@ -17,4 +17,5 @@ urlpatterns = [
     path("search/", views.search_job, name="search"),
     path("search-keyword/", views.search_job_keyword, name="search-keyword"),
     path("company-list/", views.CompanyListView.as_view(), name="company-list"),
+
 ]

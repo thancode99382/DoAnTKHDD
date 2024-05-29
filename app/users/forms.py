@@ -131,9 +131,7 @@ class RecruitmentForm(forms.ModelForm):
         super(RecruitmentForm, self).__init__(*args, **kwargs)
         self.fields["description"].required = False
         self.fields["company"].queryset = Company.objects.filter(id=employer.company.id)
-        self.fields["keywords"].queryset = Keyword.objects.filter(
-            name=employer.get_work_location_display()
-        )
+        self.fields["keywords"].queryset = Keyword.objects.all()
 
     def save(self):
         slug = slugify(self.cleaned_data["title"])
