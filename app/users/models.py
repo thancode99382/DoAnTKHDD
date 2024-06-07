@@ -1,17 +1,26 @@
-from django.contrib.auth.models import User
+from django.conf import settings
+from django.contrib.auth.models import AbstractUser, User
 from django.db import models
 
 
 class Candidate(models.Model):
-    user = models.OneToOneField("auth.User", on_delete=models.CASCADE)
-    avatar = models.ImageField(upload_to="avatar_candidate/", null=True, blank=True)
-    phone = models.CharField(max_length=20)
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    avatar = models.ImageField(
+        upload_to="avatar_candidate/", null=True, blank=True)
+    phone = models.CharField(max_length=20, null=True, blank=True)
     cv = models.FileField(upload_to="cv/", null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     full_name = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
+        if self.full_name is None:
+            return self.user.username
         return self.full_name
+
+
+class CustomUser(AbstractUser):
+    is_employer = models.BooleanField(default=False)
 
 
 ADDRESS_CHOICES = [
@@ -91,26 +100,35 @@ POSITION_CHOICES = [
 
 
 class Location(models.Model):
-    name = models.CharField(max_length=255, choices=ADDRESS_CHOICES, default="HCM")
+    name = models.CharField(
+        max_length=255, choices=ADDRESS_CHOICES, default="HCM")
 
     def __str__(self):
         return self.name
 
 
 class Employer(models.Model):
-    user = models.OneToOneField("auth.User", on_delete=models.CASCADE)
-    avatar = models.ImageField(upload_to="avatar_employer/", null=True, blank=True)
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    avatar = models.ImageField(
+        upload_to="avatar_employer/", null=True, blank=True)
     phone = models.CharField(max_length=20)
     created_at = models.DateTimeField(auto_now_add=True)
-    company = models.ForeignKey("jobs.Company", on_delete=models.CASCADE)
+    company = models.ForeignKey(
+        "jobs.Company", on_delete=models.CASCADE, null=True, blank=True
+    )
     position = models.CharField(
         max_length=3, choices=POSITION_CHOICES, default="NV", null=True, blank=True
     )
-    work_location = models.ManyToManyField(Location, blank=True, related_name="work_location", null=True, default="HCM")
+    work_location = models.CharField(
+        max_length=255, choices=ADDRESS_CHOICES, default="HCM"
+    )
     full_name = models.CharField(max_length=255, null=True, blank=True)
     gender = models.BooleanField(default=True)
 
     def __str__(self):
+        if self.full_name is None:
+            return self.user.username
         return self.full_name
 
     def get_full_location_name(abbreviation):

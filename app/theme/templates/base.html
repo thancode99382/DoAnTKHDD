@@ -83,11 +83,16 @@
             {% if user.is_authenticated %}
             <div class="items-center hidden space-x-4 rounded-lg sm:flex">
               <div>
-                <p class="text-sm font-light">Bạn là nhà tuyển dụng?</p>
-                {% if user.employer  %}
-                <a class="text-sm font-semibold" href="{% url 'applications:post-recruitment' %}">Đăng tuyển >></a>
-                {% else %}
-                <a class="text-sm font-semibold" href="{% url 'users:register-employer' %}">Đăng tuyển >></a>
+                {% if user.employer %}
+                  <p class="text-sm font-light">Bạn là nhà tuyển dụng?</p>
+                  {% if user.employer  %}
+                  <a class="text-sm font-semibold" href="{% url 'applications:post-recruitment' %}">Đăng tuyển >></a>
+                  {% else %}
+                  <a class="text-sm font-semibold" href="{% url 'users:register-employer' user.employer.id %}">Đăng tuyển >></a>
+                  {% endif %}
+                  {% else %}
+                  <p class="text-sm font-light">Xin chào, {{ user.username }}</p>
+
                 {% endif %}
               </div>
               <div class="inline-block w-0.5 self-stretch bg-neutral-100 dark:bg-white/10"></div>
@@ -114,7 +119,7 @@
                 <!-- Welcome Message and User Actions -->
                 <!-- <div class="flex-1">
                   <p class="text-lg font-semibold text-gray-700">Chào mừng,
-                    {% if user.employer %}
+                    {% if user.is_employer.full_name %}
                     {{ user.employer.full_name }}
                     {% else %}
                     {{ user.username }}
@@ -152,8 +157,10 @@
                         class="w-10 h-10 rounded-full border-2 border-[#00B14F] object-cover mr-2">
                     </button> </div>
                   <div>
-                    <h1 class="font-bold text-[#00B14F]"> {% if user.employer %}
+                    <h1 class="font-bold text-[#00B14F]"> {% if user.employer.full_name %}
                       {{ user.employer.full_name }}
+                        {% elif user.candidate.full_name %}
+                        {{ user.candidate.full_name }}
                       {% else %}
                       {{ user.username }}
                       {% endif %} </h1>

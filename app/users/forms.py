@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django.forms import Select
 from django.utils.text import slugify
@@ -10,16 +10,59 @@ from .models import *
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
+    is_employer = forms.BooleanField(required=False)
 
     class Meta:
-        model = User
-        fields = ("username", "email", "password1", "password2")
+        model = CustomUser
+        fields = ("username", "email", "password1", "password2", "is_employer")
 
     def save(self, commit=True):
         user = super().save(commit=False)
         user.email = self.cleaned_data["email"]
         if commit:
             user.save()
+        return user
+
+
+class RegistrationForm(UserCreationForm):
+    is_employer = forms.BooleanField(required=False)
+    full_name = forms.CharField(max_length=255, required=False)
+    phone = forms.CharField(max_length=255, required=False)
+    company = forms.ModelChoiceField(
+        queryset=Company.objects.all(), required=False)
+
+    class Meta:
+        model = CustomUser
+        fields = (
+            "username",
+            "password1",
+            "password2",
+            "is_employer",
+            "full_name",
+            "phone",
+            "company",
+        )
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.is_employer = self.cleaned_data["is_employer"]
+        if commit:
+            user.save()
+            if user.is_employer:
+                Employer.objects.create(
+                    user=user,
+                    full_name=self.cleaned_data["full_name"],
+                    phone=self.cleaned_data["phone"],
+                    company=self.cleaned_data["company"],
+                    # save avatar later
+                    avatar=self.cleaned_data["avatar"],
+                )
+            else:
+                Candidate.objects.create(
+                    user=user,
+                    full_name=self.cleaned_data["full_name"],
+                    phone=self.cleaned_data["phone"],
+                )
         return user
 
 
@@ -103,9 +146,11 @@ class CompanyForm(forms.ModelForm):
         employee_number = self.cleaned_data["employee_number"]
         if employee_number:
             try:
-                min_employee, max_employee = map(int, employee_number.split("-"))
+                min_employee, max_employee = map(
+                    int, employee_number.split("-"))
                 if min_employee < 0 or max_employee < 0 or min_employee > max_employee:
-                    raise forms.ValidationError("Số lượng nhân viên không hợp lệ")
+                    raise forms.ValidationError(
+                        "Số lượng nhân viên không hợp lệ")
             except ValueError:
                 raise forms.ValidationError("Số lượng nhân viên không hợp lệ")
         return employee_number + " nhân viên"
@@ -130,7 +175,8 @@ class RecruitmentForm(forms.ModelForm):
         employer = Employer.objects.get(user=user)
         super(RecruitmentForm, self).__init__(*args, **kwargs)
         self.fields["description"].required = False
-        self.fields["company"].queryset = Company.objects.filter(id=employer.company.id)
+        self.fields["company"].queryset = Company.objects.filter(
+            id=employer.company.id)
         self.fields["keywords"].queryset = Keyword.objects.all()
 
     def save(self):
@@ -143,15 +189,18 @@ class CandidateForm(forms.ModelForm):
     # custom placeholder
     full_name = forms.CharField(
         label="Họ và tên",
-        widget=forms.TextInput(attrs={"placeholder": "Họ và tên", "class": "form-control"})
+        widget=forms.TextInput(
+            attrs={"placeholder": "Họ và tên", "class": "form-control"}
+        ),
     )
     phone = forms.CharField(
         label="Số điện thoại",
-        widget=forms.TextInput(attrs={"placeholder": "Số điện thoại", "class": "form-control"})
+        widget=forms.TextInput(
+            attrs={"placeholder": "Số điện thoại", "class": "form-control"}
+        ),
     )
     avatar = forms.ImageField(
-        label="Ảnh đại diện",
-        widget=forms.FileInput(attrs={"class": "form-control"})
+        label="Ảnh đại diện", widget=forms.FileInput(attrs={"class": "form-control"})
     )
 
     class Meta:
@@ -161,3 +210,15 @@ class CandidateForm(forms.ModelForm):
             "phone",
             "avatar",
         ]
+
+
+# class CustomUserCreationForm(UserCreationForm):
+#     class Meta:
+#         model = CustomUser
+#         fields = ("username", "email")
+
+
+class CustomUserChangeForm(UserChangeForm):
+    class Meta:
+        model = CustomUser
+        fields = ("username", "email")

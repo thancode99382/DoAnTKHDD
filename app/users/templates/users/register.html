@@ -72,7 +72,21 @@
           {% endif %}
       </div>
 
-      <div class="flex text-lg font-semibold text-white justify-center rounded-md bg-[#00B14F] px-3 py-2 "> <button type="submit"> Đăng ky </button> </div>
+      <div class="mb-6">
+        Bạn có phải là nhà tuyển dụng không?
+        <div class="flex items-center gap-2 border px-5 py-2 ">
+          <div><i class="bi bi-person-fill text-[#00B14F]"></i></div>
+          <div>
+            {{form.is_employer}}
+          </div>
+          </div>
+            {% if form.is_employer.errors %}
+            	<div class="text-red-500">
+            {{ form.is_employer.errors }}
+              </div>
+            {% endif %}
+      </div>
+      <div class="flex text-lg font-semibold text-white justify-center rounded-md bg-[#00B14F] px-3 py-2 "> <button type="submit"> Đăng ký </button> </div>
 
     </form>
   </div>

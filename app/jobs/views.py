@@ -1,15 +1,13 @@
-from django.shortcuts import redirect
-from django.http import JsonResponse
-from django.template.loader import render_to_string
-
-from applications.models import CV
-from applications.forms import CVForm
 from django.db.models import Q
+from django.http import JsonResponse
+from django.shortcuts import redirect
+from django.template.loader import render_to_string
+from django.views import generic
 
+from applications.forms import CVForm
+from applications.models import CV
 from users.forms import CompanyForm
 from .models import *
-
-from django.views import generic
 
 
 # Create your views here.
@@ -24,6 +22,13 @@ class DetailJobView(generic.DetailView):
         context = super().get_context_data(**kwargs)
         context["title"] = "Detail Job"
         context["CVForm"] = CVForm()
+        user = self.request.user
+        if user.is_authenticated:
+            context["is_submitted"] = CV.objects.filter(
+                user=self.request.user, job=self.object
+            ).exists()
+        else:
+            context["is_submitted"] = False
         return context
 
 
@@ -55,12 +60,12 @@ def filter_job_by_keyword(request, keyword):
             Q(title__icontains=keyword) | Q(description__icontains=keyword)
         )
 
-    rendered_html = render_to_string('jobs/top_jobs.html', {'top_jobs': jobs})
-    return JsonResponse({'html': rendered_html})
+    rendered_html = render_to_string("jobs/top_jobs.html", {"top_jobs": jobs})
+    return JsonResponse({"html": rendered_html})
 
 
 def add_keyword(request):
-    keyword = request.GET.get('new-keyword')
+    keyword = request.GET.get("new-keyword")
     try:
         Keyword.objects.get_or_create(name=keyword)
     except Exception as e:
