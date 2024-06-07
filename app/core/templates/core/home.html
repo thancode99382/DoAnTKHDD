@@ -23,8 +23,8 @@ Home
   <!-- main -->
   <div class="bg-[#f3f5f7]">
     <div class="sm:containerc px-6 sm:px-[144px] py-6  w-10/12 mx-auto sm:container">
-      <div class="flex gap-3 items-center    ">
-        <h1 class="text-[24px] font-bold border-r-2 border-slate-600 pr-3 text-[#00B14F]"> Việc làm tốt nhất </h1> <img
+      <div class="flex items-center gap-3 ">
+        <h1 class="text-[24px] font-bold border-r-2 border-slate-600 pr-3  text-orange-500"> Việc làm tốt nhất </h1> <img
           class="w-[110px] h-[26px]"
           src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/feature-job/label-toppy-ai.png"
           alt="">
@@ -35,19 +35,19 @@ Home
           <div class="flex items-center mt-3">
 
             <button
-              class="job-filter-button text-white bg-[#00B14F]  focus:outline-none focus:ring-4 focus:ring-[#00B14F] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 ">
+              class="job-filter-button bg-orange   focus:outline-none focus:ring-4 focus:ring-orange text-orange-500 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 ">
               Ngẫu Nhiên
             </button>
             <button
-              class="job-filter-button text-black bg-[#E9EAEC]  focus:outline-none hover:ring-1 hover:ring-[#00B14F] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
+              class="job-filter-button  bg-[#E9EAEC]  focus:outline-none hover:ring-1 hover:ring-orange text-orange-500 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
               Hà Nội
             </button>
             <button
-              class="job-filter-button text-black bg-[#E9EAEC]  focus:outline-none hover:ring-1 hover:ring-[#00B14F] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
+              class="job-filter-button  bg-[#E9EAEC]  focus:outline-none hover:ring-1 hover:ring-orange text-orange-500 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
               Hồ Chí Minh
             </button>
             <button
-              class="job-filter-button text-black bg-[#E9EAEC]  focus:outline-none hover:ring-1 hover:ring-[#00B14F] font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
+              class="job-filter-button  bg-[#E9EAEC]  focus:outline-none hover:ring-1 hover:ring-orange text-orange-500 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
               Đà nẵng
             </button>
 
@@ -77,12 +77,12 @@ Home
                     }
                 });
             }
-            function activateButton(button) {
-                {# Remove common classes bg-[#E9EAEC] #}
-                $(".job-filter-button").removeClass("text-white bg-[#00B14F]").addClass("text-black bg-[#E9EAEC]");
-                {# Add class for an activate button #}
-                $(button).removeClass("text-black bg-[#E9EAEC]").addClass("text-white bg-[#00B14F]");
-            }
+            // function activateButton(button) {
+            //     {# Remove common classes bg-[#E9EAEC] #}
+            //     $(".job-filter-button").removeClass("text-white bg-orange text-orange-500").addClass("text-black bg-[#E9EAEC]");
+            //     {# Add class for an activate button #}
+            //     $(button).removeClass("text-black bg-[#E9EAEC]").addClass("text-white bg-orange text-orange-500");
+            // }
 
             // Trigger the first button click when the page loads
             var initialKeyword = $(".job-filter-button:first").text().trim();
@@ -100,7 +100,7 @@ Home
       <!-- top companies -->
       <div class="py-3">
         <div class="py-6">
-          <h1 class="text-[24px] font-bold border-r-2 border-slate-600 pr-3 text-[#00B14F]"> Top công ty hàng đầu </h1>
+          <h1 class="text-[24px] font-bold border-r-2 border-slate-600 pr-3  text-orange-500"> Top công ty hàng đầu </h1>
         </div>
 
 
@@ -115,24 +115,24 @@ Home
     </div>
     <!-- over tool -->
     <div
-      style="background-image: url('https://static.topcv.vn/v4/image/welcome/box-flash-badge/cover.png'); background-repeat: no-repeat ; background-position: center; background-size: cover; ">
+      style="background: linear-gradient(to right, rgb(118, 18, 255), rgb(5, 178, 255)); ">
       <div class="sm:containerc  px-6 sm:px-[144px] py-6 ">
         <div class=" sm:flex justify-center text-white text-[40px] font-bold">
           <h1>Công cụ vượt trội</h1>
         </div>
-        <div class=" md:flex gap-32 justify-center ">
+        <div class="justify-center gap-32 md:flex">
 
           <div>
             <!-- item overtool -->
             <div>
-              <div class=" gap-3 bg-white p-4 rounded-lg mt-8 flex">
+              <div class="flex gap-3 p-4 mt-8 bg-white rounded-lg ">
                 <div class="">
-                  <img class="h-12 w-12"
+                  <img class="w-12 h-12"
                     src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/superior-tool/gross-net.png">
                 </div>
                 <div class="">
                   <h3 class="text-base font-bold">Tính lương GROSS - NET</h3>
-                  <span class="text-[#00B14F]">
+                  <span class="text-orange-500 ">
                     Khám phá ngay
                     <i class="fa-solid fa-arrow-right"></i>
                   </span>
@@ -141,14 +141,14 @@ Home
             </div>
             <!-- item overtool -->
             <div>
-              <div class=" gap-3 w-fit bg-white p-4 rounded-lg mt-8 flex">
+              <div class="flex gap-3 p-4 mt-8 bg-white rounded-lg w-fit">
                 <div class="">
-                  <img class="h-12 w-12"
+                  <img class="w-12 h-12"
                     src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/superior-tool/lai-suat-kep.png">
                 </div>
                 <div class="">
                   <h3 class="text-base font-bold">Tính lãi suất kép</h3>
-                  <span class="text-[#00B14F]">
+                  <span class="text-orange-500 ">
                     Khám phá ngay
                     <i class="fa-solid fa-arrow-right"></i>
                   </span>
@@ -157,14 +157,14 @@ Home
             </div>
             <!-- item overtool -->
             <div>
-              <div class=" gap-3 bg-white p-4 rounded-lg mt-8 flex">
+              <div class="flex gap-3 p-4 mt-8 bg-white rounded-lg ">
                 <div class="">
-                  <img class="h-12 w-12"
+                  <img class="w-12 h-12"
                     src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/superior-tool/thu-nhap-ca-nhan.png">
                 </div>
                 <div class="">
                   <h3 class="text-base font-bold"> Tính thuế thu nhập cá nhân</h3>
-                  <span class="text-[#00B14F]">
+                  <span class="text-orange-500 ">
                     Khám phá ngay
                     <i class="fa-solid fa-arrow-right"></i>
                   </span>
@@ -180,14 +180,14 @@ Home
             <div>
               <!-- item overtool -->
               <div>
-                <div class=" gap-3 bg-white p-4 rounded-lg mt-8 flex">
+                <div class="flex gap-3 p-4 mt-8 bg-white rounded-lg ">
                   <div class="">
-                    <img class="h-12 w-12"
+                    <img class="w-12 h-12"
                       src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/superior-tool/bao-hiem-that-nghiep.png">
                   </div>
                   <div class="">
                     <h3 class="text-base font-bold">Tính bảo hiểm thất nghiệp</h3>
-                    <span class="text-[#00B14F]">
+                    <span class="text-orange-500 ">
                       Khám phá ngay
                       <i class="fa-solid fa-arrow-right"></i>
                     </span>
@@ -196,14 +196,14 @@ Home
               </div>
               <!-- item overtool -->
               <div>
-                <div class=" gap-3 bg-white w-fit p-4 rounded-lg mt-8 flex">
+                <div class="flex gap-3 p-4 mt-8 bg-white rounded-lg w-fit">
                   <div class="">
-                    <img class="h-12 w-12"
+                    <img class="w-12 h-12"
                       src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/superior-tool/ke-hoach-tiet-kiem.png">
                   </div>
                   <div class="">
                     <h3 class="text-base font-bold">Lập kế hoạch tiết kiệm</h3>
-                    <span class="text-[#00B14F]">
+                    <span class="text-orange-500 ">
                       Khám phá ngay
                       <i class="fa-solid fa-arrow-right"></i>
                     </span>
@@ -212,14 +212,14 @@ Home
               </div>
               <!-- item overtool -->
               <div>
-                <div class=" gap-3 bg-white p-4 rounded-lg mt-8 flex">
+                <div class="flex gap-3 p-4 mt-8 bg-white rounded-lg ">
                   <div class="">
-                    <img class="h-12 w-12"
+                    <img class="w-12 h-12"
                       src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/superior-tool/bao-hiem-xa-hoi-mot-lan.png">
                   </div>
                   <div class="">
                     <h3 class="text-base font-bold"> Bảo hiểm xã hổi một lần </h3>
-                    <span class="text-[#00B14F]">
+                    <span class="text-orange-500 ">
                       Khám phá ngay
                       <i class="fa-solid fa-arrow-right"></i>
                     </span>
@@ -236,10 +236,10 @@ Home
     <!-- top work -->
     <div class="sm:containerc  px-6 sm:px-[144px] py-6 ">
 
-    <div class="sm:containerc bg-white  px-6 sm:px-[144px] py-6 ">
+    <div class="sm:containerc  px-6 sm:px-[144px] py-6 ">
       <!-- top jobs -->
       <div class="">
-        <h1 class="text-[24px] font-bold mb-6 border-r-2 border-slate-600 pr-3 text-[#00B14F]">
+        <h1 class="text-[24px] font-bold mb-6 border-r-2 border-slate-600 pr-3  text-orange-500">
           Top ngành nghề nổi bật
         </h1>
 
@@ -254,15 +254,15 @@ Home
       <div>
 
         <div class="py-6">
-          <h1 class="text-[24px] font-bold border-r-2 border-slate-600 pr-3 text-[#00B14F]"> Cùng TopCV xây dựng thương
+          <h1 class="text-[24px] font-bold border-r-2 border-slate-600 pr-3  text-orange-500"> Cùng TopCV xây dựng thương
             hiệu cá nhân
           </h1>
         </div>
-        <div class="grid md:grid-cols-2 gap-6 ">
+        <div class="grid gap-6 md:grid-cols-2 ">
           <!-- item topwork -->
-          <div class="flex bg-[#F3F5F7] rounded-lg hover:border hover:shadow hover:shadow-[#00B14F]  ">
-            <div class=" space-y-6 p-4 ">
-              <h3 class="text-xl font-bold mb-3">
+          <div class="flex bg-[bg-white   bg-white rounded-lg hover:border hover:shadow hover:shadow-orange text-orange-500  ">
+            <div class="p-4 space-y-6 ">
+              <h3 class="mb-3 text-xl font-bold">
                 TopCV Profile
               </h3>
               <p class="text-sm font-semibold text-[#6F7882] mb-5">
@@ -270,7 +270,7 @@ Home
                 thế mạnh của bản thân thông qua việc đính kèm học vấn, kinh nghiệm, dự án, kỹ
                 năng,... của mình
               </p>
-              <div class="bg-[#00B14F] text-white  w-fit py-1 px-4 rounded-md ">
+              <div class="px-4 py-1 text-orange-500 rounded-md bg-orange w-fit ">
                 Tạo Profile
 
               </div>
@@ -281,9 +281,9 @@ Home
             </div>
           </div>
 
-          <div class="flex bg-[#F3F5F7] rounded-lg hover:border hover:shadow hover:shadow-[#00B14F]  ">
-            <div class=" space-y-6 p-4 ">
-              <h3 class="text-xl font-bold mb-3">
+          <div class="flex text-orange-500 bg-white rounded-lg hover:border hover:shadow hover:shadow-orange ">
+            <div class="p-4 space-y-6 ">
+              <h3 class="mb-3 text-xl font-bold">
                 TopCV Profile
               </h3>
               <p class="text-sm font-semibold text-[#6F7882] mb-5">
@@ -291,29 +291,7 @@ Home
                 thế mạnh của bản thân thông qua việc đính kèm học vấn, kinh nghiệm, dự án, kỹ
                 năng,... của mình
               </p>
-              <div class="bg-[#00B14F] text-white  w-fit py-1 px-4 rounded-md ">
-                Tạo Profile
-
-              </div>
-            </div>
-            <div class="">
-              <img class=""
-                src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/sel-growth/profile-desktop.png">
-            </div>
-          </div>
-
-          <!-- item topwork -->
-          <div class="flex bg-[#F3F5F7] rounded-lg hover:border hover:shadow hover:shadow-[#00B14F]  ">
-            <div class=" space-y-6 p-4 ">
-              <h3 class="text-xl font-bold mb-3">
-                TopCV Profile
-              </h3>
-              <p class="text-sm font-semibold text-[#6F7882] mb-5">
-                TopCV Profile là bản hồ sơ năng lực giúp bạn xây dựng thương hiệu cá nhân, thể hiện
-                thế mạnh của bản thân thông qua việc đính kèm học vấn, kinh nghiệm, dự án, kỹ
-                năng,... của mình
-              </p>
-              <div class="bg-[#00B14F] text-white  w-fit py-1 px-4 rounded-md ">
+              <div class="px-4 py-1 text-white text-orange-500 rounded-md bg-orange w-fit ">
                 Tạo Profile
 
               </div>
@@ -325,9 +303,9 @@ Home
           </div>
 
           <!-- item topwork -->
-          <div class="flex bg-[#F3F5F7] rounded-lg hover:border hover:shadow hover:shadow-[#00B14F]  ">
-            <div class=" space-y-6 p-4 ">
-              <h3 class="text-xl font-bold mb-3">
+          <div class="flex bg-[bg-white   bg-white rounded-lg hover:border hover:shadow hover:shadow-orange text-orange-500  ">
+            <div class="p-4 space-y-6 ">
+              <h3 class="mb-3 text-xl font-bold">
                 TopCV Profile
               </h3>
               <p class="text-sm font-semibold text-[#6F7882] mb-5">
@@ -335,7 +313,29 @@ Home
                 thế mạnh của bản thân thông qua việc đính kèm học vấn, kinh nghiệm, dự án, kỹ
                 năng,... của mình
               </p>
-              <div class="bg-[#00B14F] text-white  w-fit py-1 px-4 rounded-md ">
+              <div class="px-4 py-1 text-white text-orange-500 rounded-md bg-orange w-fit ">
+                Tạo Profile
+
+              </div>
+            </div>
+            <div class="">
+              <img class=""
+                src="https://cdn-new.topcv.vn/unsafe/https://static.topcv.vn/v4/image/welcome/sel-growth/profile-desktop.png">
+            </div>
+          </div>
+
+          <!-- item topwork -->
+          <div class="flex bg-[bg-white   bg-white rounded-lg hover:border hover:shadow hover:shadow-orange text-orange-500  ">
+            <div class="p-4 space-y-6 ">
+              <h3 class="mb-3 text-xl font-bold">
+                TopCV Profile
+              </h3>
+              <p class="text-sm font-semibold text-[#6F7882] mb-5">
+                TopCV Profile là bản hồ sơ năng lực giúp bạn xây dựng thương hiệu cá nhân, thể hiện
+                thế mạnh của bản thân thông qua việc đính kèm học vấn, kinh nghiệm, dự án, kỹ
+                năng,... của mình
+              </p>
+              <div class="px-4 py-1 text-white text-orange-500 rounded-md bg-orange w-fit ">
                 Tạo Profile
 
               </div>

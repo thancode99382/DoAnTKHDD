@@ -73,7 +73,7 @@
       <nav class="bg-white border-gray-200 dark:bg-gray-900 ">
         <div class="flex flex-wrap items-center justify-between mx-3 ">
           <a href="{% url 'core:home' %}" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="https://static.topcv.vn/v4/image/logo/topcv-logo-6.png" class="h-[72px] ml-4"
+            <img  src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc1Nzc3Kzc3Nzc3NTc3Nys3NzctKzU3Nzc3NyswNzUuNS41Ky0tKys1Lf/AABEIABwAHAMBIgACEQEDEQH/xAAaAAACAgMAAAAAAAAAAAAAAAAGBwEFAAID/8QAKBAAAQMEAQMDBQEAAAAAAAAAAQIEEQADBQYhEjFBBxNRQmFxgZEU/8QAFwEBAAMAAAAAAAAAAAAAAAAAAgEDBP/EABoRAAMBAQEBAAAAAAAAAAAAAAABAhESIQP/2gAMAwEAAhEDEQA/AFOpUSTXVTV4hsHS2TlLYiRfNlQQR89URRv6N4FhmdhePcpbF5vjLAvJsESFrJMEjyB0nj5j4q2Z+re1vC8y4wbR1gbJ6b7dM9VpJ7Svk/klMd+BWuvpjxFUx0hWoJuHptpUsxMJEmKkGRTcYLb6Do+R2ctLbbL7DcV/gZjkNrayVIQOOyUnqPA+kcUnraShATSmug0sCPR9pc6fnk5Gxb96wtHtObEx7iCZ4+4IkfseaN2O2aHiswHmHRds47LoXYy+MvNVFKBBKVgAEdyUlKSRC+BxSrIqIFQ4VekqsCP1B2pe37AXSEm1jmyfaZWSIIR5UR4Ko/gA8UNxWwArIpJYsQW9P//Z" class="h-[72px] ml-4"
               alt="Flowbite Logo" />
 
           </a>
@@ -98,7 +98,7 @@
                 <button id="btn-userdrop" type="button"
                   class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-900 rounded-lg cursor-pointer">
                   <img src="https://www.topcv.vn/images/avatar-default.jpg" alt="Profile Picture"
-                    class="w-10 h-10 rounded-full border-2 border-[#00B14F] object-cover mr-2">
+                    class="object-cover w-10 h-10 mr-2 border-2 border-orange-400 rounded-full">
 
                 </button>
 
@@ -125,7 +125,7 @@
 
                   <div class="flex mt-2 space-x-3">
                     <a
-                      class="text-white bg-[#00B14F] hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-md text-sm px-4 py-2">View
+                      class="px-4 py-2 text-sm font-medium text-white bg-orange-400 rounded-md hover:bg-green-700 focus:ring-4 focus:ring-green-300">View
                       Profile</a>
 
                     {# <a class="text-white bg-[#212F3F] hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 font-medium rounded-md text-sm px-4 py-2 ">Post Job</a> #}
@@ -149,10 +149,10 @@
                   <div> <button
                       class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-900 rounded-lg cursor-pointer ">
                       <img src="https://www.topcv.vn/images/avatar-default.jpg" alt="Profile Picture"
-                        class="w-10 h-10 rounded-full border-2 border-[#00B14F] object-cover mr-2">
+                        class="object-cover w-10 h-10 mr-2 border-2 border-orange-400 rounded-full">
                     </button> </div>
                   <div>
-                    <h1 class="font-bold text-[#00B14F]"> {% if user.employer %}
+                    <h1 class="font-bold text-orange-500"> {% if user.employer %}
                       {{ user.employer.full_name }}
                       {% else %}
                       {{ user.username }}
@@ -166,7 +166,7 @@
                     <a href="{% url 'users:profile' %}" class="block px-4 py-4 text-sm text-gray-700 bg-[#f4f5f5] rounded-md " role="menuitem">
                       <div class="inline-flex items-center gap-2">
 
-                        <span> <i class="bi bi-pencil-square text-[#00B14F]"></i></span> Thông tin cá nhân
+                        <span> <i class="text-orange-500 bi bi-pencil-square"></i></span> Thông tin cá nhân
                       </div>
                     </a>
                   </li>
@@ -176,7 +176,7 @@
 
                         <span>
 
-                            <i class="bi bi-shield-lock text-[#00B14F]"></i></span> Cài đặt bảo mật
+                            <i class="text-orange-500 bi bi-shield-lock"></i></span> Cài đặt bảo mật
                       </div>
                     </a>
                   </li>
@@ -186,7 +186,7 @@
                     <a href="{% url 'applications:view-applicant-cv' %}" class="block px-4 py-4 text-sm text-gray-700 bg-[#f4f5f5] rounded-md " role="menuitem">
                       <div class="inline-flex items-center gap-2">
 
-                        <span> <i class="bi bi-bell text-[#00B14F]"></i></span> Ứng viên đã ứng tuyển
+                        <span> <i class="text-orange-500 bi bi-bell"></i></span> Ứng viên đã ứng tuyển
                       </div>
                     </a>
                   </li>
@@ -196,7 +196,7 @@
                     <a href="{% url 'users:logout' %}" class="block px-4 py-4 text-sm text-gray-700 bg-[#f4f5f5] rounded-md " role="menuitem">
                       <div class="inline-flex items-center gap-2">
 
-                        <span> <i class="bi bi-box-arrow-in-right text-[#00B14F]"></i></span> Đăng xuất
+                        <span> <i class="text-orange-300 bi bi-box-arrow-in-right"></i></span> Đăng xuất
                       </div>
                     </a>
                   </li>
@@ -209,10 +209,10 @@
             {% else %}
             <div class="hidden space-x-3 md:block">
               <a type="button" href="{% url 'users:login' %}"
-                class="text-black focus:ring-4 focus:outline-none border border-[#00B14F] focus:ring-[#00B14F] font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Đăng
+                class="px-4 py-2 text-sm font-medium text-center text-black border border-orange-400 rounded-md focus:ring-4 focus:outline-none focus:ring-orangetext-orange-500 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Đăng
                 nhập</a>
               <a type="button" href="{% url 'users:register' %}"
-                class="text-white focus:ring-4 focus:outline-none border border-[#00B14F] bg-[#00B14F] focus:ring-[#00B14F] font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Đăng
+                class="px-4 py-2 text-sm font-medium text-center text-white bg-orange-400 border border-orange-400 rounded-md focus:ring-4 focus:outline-none focus:ring-orangetext-orange-500 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Đăng
                 ký</a>
               <button type="button"
                 class="text-white focus:ring-4 focus:outline-none border bg-[#212F3F] focus:ring-blue-300 font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Đăng
@@ -240,27 +240,27 @@
               class="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg md:p-0 bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
                 <a href="#"
-                  class=" block py-2 px-3 md:p-0 text-white bg-[#00B14F] rounded md:bg-transparent md:text-[#00B14F] md:dark:text-blue-500"
+                  class="block px-3 py-2 text-white bg-orange-400 rounded  md:p-0 md:bg-transparent md:text-orange-500 md:dark:text-blue-500"
                   aria-current="page">Việc làm</a>
               </li>
               <li>
                 <a href="#"
-                  class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#00B14F] md:dark:hover:text-[#00B14F] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Hồ
+                  class="block px-3 py-2 text-gray-900 rounded md:p-0 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-orange-500 md:dark:hover:text-orange-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Hồ
                   sơ & CV</a>
               </li>
               <li>
                 <a href="{% url 'applications:company-list' %}"
-                  class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#00B14F] md:dark:hover:text-[#00B14F] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Công
+                  class="block px-3 py-2 text-gray-900 rounded md:p-0 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-orange-500 md:dark:hover:text-orange-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Công
                   ty</a>
               </li>
               <li>
                 <a href="#"
-                  class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#00B14F] md:dark:hover:text-[#00B14F] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Công
+                  class="block px-3 py-2 text-gray-900 rounded md:p-0 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-orange-500 md:dark:hover:text-orange-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Công
                   cụ</a>
               </li>
               <li>
                 <a href="#"
-                  class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#00B14F] md:dark:hover:text-[#00B14F] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Cẩm
+                  class="block px-3 py-2 text-gray-900 rounded md:p-0 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-orange-500 md:dark:hover:text-orange-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Cẩm
                   nang nghề nghiệp</a>
               </li>
             </ul>
