@@ -10,7 +10,9 @@ urlpatterns = [
     path("logout/", views.user_logout, name="logout"),
     path("profile/", views.RegisterCandidate.as_view(), name="profile"),
     path(
-        "register-employer/", views.RegisterEmployer.as_view(), name="register-employer"
+        "register-employer/<int:pk>/",
+        views.RegisterEmployer.as_view(),
+        name="register-employer",
     ),
-    path("profile-update/", views.change_information, name="profile-update"),
+    path("update-profile/", views.update_profile, name="profile-update"),
 ]

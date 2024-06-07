@@ -26,22 +26,22 @@ Profile
                         </div>
 {#                        {{ form.as_p }}#}
                         
-                          <form method="post" enctype="multipart/form-data">
+                          <form method="post" enctype="multipart/form-data" id="profile-form">
                             {% csrf_token %}
                             {% if profile %}
                               <div class="mb-3">
                                 <div class="mb-3">
                                   <p class="mb-3 font-medium">Họ và tên <span class="text-red-500">*</span></p>
                                   <div class="border rounded-lg">
-                                    <input type="text" id="full_name" readonly class="w-full border-none rounded-lg focus:ring-0" value="{{ profile.full_name }}" />
+                                    <input type="text" id="full_name" name="full_name" readonly class="w-full border-none rounded-lg focus:ring-0" value="{{ profile.full_name }}" />
                                   </div>
                                 </div>
                               </div>
                               <div class="mb-3">
                                 <div class="mb-3">
-                                  <p class="mb-3 font-medium">Số điện thoại <span class="text-red-500">*</span></p>
+                                 <p class="mb-3 font-medium">Số điện thoại <span class="text-red-500">*</span></p>
                                   <div class="border rounded-lg">
-                                    <input type="text" id="phone" readonly class="w-full border-none rounded-lg focus:ring-0" value="{{ profile.phone }}" />
+                                    <input type="text" id="phone" name="phone" readonly class="w-full border-none rounded-lg focus:ring-0" value="{{ profile.phone }}" />
                                   </div>
                                 </div>
                               </div>
@@ -129,7 +129,7 @@ Profile
                         <div class="box box-white box-setting-sidebar">
                             <div class="flex gap-3">
                                 <div class="">
-                                  {% if profile %}
+                                  {% if profile.avatar %}
                                     <img class="w-20 h-20 rounded-full "
                                          src="{{ profile.avatar.url }}" alt="">
                                     {% else %}
@@ -139,7 +139,7 @@ Profile
                                 </div>
                                 <div class="turn-on-job__header-info">
                                     <div class="text-sm font-normal text-welcome ">Chào bạn trở lại,</div>
-                                    {% if profile %}
+                                    {% if profile.full_name %}
                                     <h4 class="text-base font-bold profile-fullname ">{{ profile.full_name }}</h4>
                                     {% else %}
                                     <h4 class="text-base font-bold profile-fullname ">{{ user.username }}</h4>

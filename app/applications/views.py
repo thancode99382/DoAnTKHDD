@@ -7,7 +7,7 @@ from django.views import generic
 from django.db.models import Q
 
 from applications.forms import CVForm
-from applications.models import CV
+from applications.models import CV, Application
 from jobs.models import Company, Job
 from users.forms import RecruitmentForm
 
@@ -37,24 +37,31 @@ def post_recruitment(request):
             recruitment.save()
             return redirect("core:home")
     else:
-        form = RecruitmentForm(user=request.user)
+        if hasattr(request.user, "employer") and request.user.employer.company:
+            form = RecruitmentForm(
+                user=request.user, initial={
+                    "company": request.user.employer.company}
+            )
+        else:
+            return redirect("users:register-employer", pk=request.user.employer.id)
     return render(request, "applications/post_recruitment.html", {"form": form})
 
 
 class SubmitCV(generic.CreateView):
     form_class = CVForm
-    success_url = reverse_lazy("core:home")
-
-    # template_name = "applications/submit_cv.html"
 
     def form_valid(self, form):
         job = Job.objects.get(slug=self.request.POST.get("job_slug"))
         response = super().form_valid(form)
         cv = form.instance
-        cv.candidate = self.request.user
+        cv.user = self.request.user
         cv.job = job
         cv.save()
         return response
+
+    def get_success_url(self):
+        job_slug = self.request.POST.get("job_slug")
+        return reverse_lazy("jobs:detail-job", kwargs={"slug": job_slug})
 
 
 @login_required
@@ -167,3 +174,13 @@ class CompanyListView(generic.ListView):
     paginate_by = 10
     ordering = ["-created_at"]
     extra_context = {"title": "Company List"}
+
+
+def user_applied_jobs(request):
+    user = request.user
+    candidate = user.candidate
+    applications = Application.objects.filter(
+        candidate=candidate).select_related("job")
+    jobs = [app.job for app in applications]
+
+    return render(request, "applications/applied_jobs.html", {"jobs": jobs})

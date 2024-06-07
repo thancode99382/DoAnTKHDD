@@ -7,9 +7,11 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic
 from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 
 from jobs.models import Company
 from users.forms import CustomUserCreationForm, EmployerForm, CompanyForm, CandidateForm
+from users.models import Employer
 
 
 # Create your views here.
@@ -28,7 +30,7 @@ class Login(LoginView):
 
 class Register(generic.CreateView):
     form_class = CustomUserCreationForm
-    success_url = reverse_lazy("users:login")
+    success_url = reverse_lazy("core:home")
     template_name = "users/register.html"
 
     def get_context_data(self, **kwargs):
@@ -39,14 +41,16 @@ class Register(generic.CreateView):
     def form_valid(self, form):
         response = super().form_valid(form)
         user = form.instance
+        user.is_employer = form.cleaned_data.get("is_employer")
+        user.save()
         login(self.request, user)
         return response
 
 
-class RegisterEmployer(generic.CreateView):
+class RegisterEmployer(generic.UpdateView):
     form_class = EmployerForm
-    success_url = reverse_lazy("core:home")
     template_name = "users/register_employer.html"
+    success_url = reverse_lazy("core:home")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -54,6 +58,11 @@ class RegisterEmployer(generic.CreateView):
         context["company_form"] = CompanyForm()
         context["companies"] = Company.objects.all()
         return context
+
+    def get_object(self):
+        # Assuming 'pk' is the primary key of the Employer instance to update
+        employer_id = self.kwargs.get("pk")
+        return get_object_or_404(Employer, pk=employer_id)
 
     def form_valid(self, form):
         employer = form.save(commit=False)
@@ -86,7 +95,7 @@ class RegisterCandidate(generic.CreateView):
         context["title"] = "Profile"
         if hasattr(self.request.user, "candidate"):
             context["profile"] = self.request.user.candidate
-        elif hasattr(self.request.user, "candidate"):
+        elif hasattr(self.request.user, "employer"):
             context["profile"] = self.request.user.employer
 
         return context
@@ -99,17 +108,18 @@ class RegisterCandidate(generic.CreateView):
         return redirect("users:profile")
 
 
-def change_information(request):
+def update_profile(request):
     if request.method == "POST":
         full_name = request.POST.get("full_name")
         phone = request.POST.get("phone")
-        if hasattr(request.user, "candidate"):
+        print(phone)
+        if request.user.is_employer == False:
             candidate = request.user.candidate
             candidate.full_name = full_name
             candidate.phone = phone
             candidate.save()
             return JsonResponse({"message": "Profile updated successfully"}, status=200)
-        elif hasattr(request.user, "employer"):
+        elif request.user.is_employer == True:
             employer = request.user.employer
             employer.full_name = full_name
             employer.phone = phone

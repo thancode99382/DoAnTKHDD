@@ -88,6 +88,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "app.wsgi.application"
 
+AUTH_USER_MODEL = "users.CustomUser"
+
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -113,7 +115,7 @@ WSGI_APPLICATION = "app.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "jobs_management",
+        "NAME": "jobs_management_1",
         "USER": "duchi",
         "PASSWORD": "231132",
         "HOST": "localhost",
@@ -121,9 +123,16 @@ DATABASES = {
     }
 }
 
-#
+
 # DATABASES = {
 #     'default': dj_database_url.parse(config('DB_URL'))
+# }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 # }
 
 # Password validation
@@ -176,7 +185,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 if platform.system() == "Windows":
     NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
-
 
 customColorPalette = [
     {"color": "hsl(4, 90%, 58%)", "label": "Red"},

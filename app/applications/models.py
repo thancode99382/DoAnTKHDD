@@ -1,11 +1,20 @@
 from django.db import models
+from django.conf import settings
 
 
 # Create your models here.
 class Application(models.Model):
     candidate = models.ForeignKey("users.Candidate", on_delete=models.CASCADE)
     job = models.ForeignKey("jobs.Job", on_delete=models.CASCADE)
-    status = models.CharField(max_length=255)
+    status = models.CharField(
+        max_length=50,
+        choices=[
+            ("applied", "Applied"),
+            ("interview", "Interview"),
+            ("offer", "Offer"),
+            ("rejected", "Rejected"),
+        ],
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -56,10 +65,11 @@ class Feedback(models.Model):
 class CV(models.Model):
     """This CV model is used to submit for a job application."""
 
-    candidate = models.ForeignKey(
-        "auth.User", on_delete=models.CASCADE, null=True, blank=True
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True
     )
-    job = models.ForeignKey("jobs.Job", on_delete=models.CASCADE, null=True, blank=True)
+    job = models.ForeignKey(
+        "jobs.Job", on_delete=models.CASCADE, null=True, blank=True)
     file = models.FileField(upload_to="cvs/")
     full_name = models.CharField(max_length=255)
     email = models.EmailField()
@@ -68,4 +78,4 @@ class CV(models.Model):
     status = models.CharField(max_length=255, default="Pending")
 
     def __str__(self):
-        return f"{self.candidate.username} - {self.created_at}"
+        return f"{self.user.username} - {self.job.title} - {self.created_at}"
